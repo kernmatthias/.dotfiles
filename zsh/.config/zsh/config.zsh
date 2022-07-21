@@ -25,7 +25,7 @@ export ZPLUG_HOME=$XDG_CONFIG_HOME/zsh/zplug
 # aliases
 alias grep='rg --color'
 alias ga='git add'
-alias gf='git fetch'
+alias gf='git fetch --all'
 alias gp='git pull'
 alias gpu='git push'
 alias gs='git status'
