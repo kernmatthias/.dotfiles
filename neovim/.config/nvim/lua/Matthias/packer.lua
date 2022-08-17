@@ -18,9 +18,12 @@ return require('packer').startup(function(use)
 
     -- treesitter -> semantic highlighting
     use('nvim-treesitter/nvim-treesitter-context')
+    use('nvim-treesitter/playground')
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     -- completions
+    -- use('hrsh7th/cmp-nvim-lsp')
+    -- use('hrsh7th/cmp-buffer')
     -- use('hrsh7th/nvim-cmp')
     use('ms-jpq/coq_nvim')
 
