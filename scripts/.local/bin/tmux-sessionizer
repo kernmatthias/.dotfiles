@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd --min-depth=1 --max-depth=1 --type=d --hidden . ~/projects ~/hsd ~/work ~/.dotfiles ~/ | fzf)
+    selected=$(fd --min-depth=1 --max-depth=1 --type=d --hidden . ~/projects ~/hsd ~/work ~/personal ~/.dotfiles ~/ | fzf)
 fi
 
 if [[ -z $selected ]]; then
