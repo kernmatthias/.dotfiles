@@ -2,6 +2,7 @@
 vim.opt.nu = true
 vim.opt.rnu = true
 
+-- prevent highlighted stuff from staying highlighted
 vim.opt.hlsearch = false
 vim.opt.hidden = true
 
@@ -15,7 +16,6 @@ vim.opt.smartindent = true
 -- no error bell
 vim.opt.errorbells = false
 
--- place for displaying errors
 vim.opt.signcolumn = "yes"
 
 -- other configuration
@@ -27,5 +27,14 @@ vim.opt.incsearch = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
+-- place for displaying errors
 vim.opt.cmdheight = 1
+
+-- set leader
+vim.g.mapleader = " "
+
+-- netrw
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
 

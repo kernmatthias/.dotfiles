@@ -2,7 +2,7 @@ local remap = require('Matthias.keymap')
 local nnoremap = remap.nnoremap
 local vnoremap = remap.vnoremap
 -- local inoremap = remap.inoremap
--- local xnoremap = remap.xnoremap
+local xnoremap = remap.xnoremap
 
 -- line shifting in all modes
 -- nnoremap("<A-j>", ":m .+1<CR>==")
@@ -21,4 +21,7 @@ nnoremap("<leader>d", ":Ex<CR>")
 
 -- undotree
 nnoremap("<leader>u", ":UndotreeToggle<CR>")
+
+-- allow replacing selection with regular buffer and keeping the content
+xnoremap("<leader>p", "\"_dP")
 

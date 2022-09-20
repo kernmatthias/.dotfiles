@@ -1,11 +1,8 @@
--- vim.g.coq_settings = {}
-
---[[
 local cmp = require('cmp')
 
 cmp.setup({
     snippet = {
-    }
+    },
     mapping = cmp.mapping.preset.insert({
         ['<tab>'] = cmp.mapping.confirm({ select = true }),
     }),
@@ -20,5 +17,4 @@ cmp.setup({
         { name = 'buffer' },
     }
 })
---]]
 

@@ -1,10 +1,10 @@
-local telescope = require('telescope')
+local telescope = require("telescope")
 local previewers = require("telescope.previewers")
 local actions = require("telescope.actions")
 
 telescope.setup({
     defaults = {
-        prompt_prefix = " >",
+        prompt_prefix = "> ",
         color_devicons = true,
 
         file_previewer = previewers.vim_buffer_cat.new,
@@ -28,7 +28,7 @@ telescope.setup({
     },
 })
 
-telescope.load_extension('fzf')
+telescope.load_extension("fzf")
 
 local M = {}
 

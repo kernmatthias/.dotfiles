@@ -1,9 +1,8 @@
--- set leader
-vim.g.mapleader = " "
 
 -- load configs
 require('Matthias.set')
 require('Matthias.colors')
+require('Matthias.autocmd')
 require('Matthias.completions')
 require('Matthias.keymap')
 require('Matthias.neogit')
