@@ -21,6 +21,7 @@ compinit
 export TERMINAL=alacritty
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$XDG_CONFIG_HOME/zsh/zplug
+export DOTFILES=$HOME/.dotfiles
 
 # path
 path+="$HOME/.local/bin"
