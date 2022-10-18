@@ -38,15 +38,20 @@ alias gpu="git push"
 alias gr="git rebase -i"
 alias gs="git status"
 alias gsw="git switch"
-alias vim="nvim"
-alias nvimdiff="nvim -d"
-alias vimdiff="nvim -d"
+#alias vim="nvim"
+#alias nvimdiff="nvim -d"
+#alias vimdiff="nvim -d"
 
 # load plugins
 source $ZPLUG_HOME/init.zsh
 
-zplug "woefe/git-prompt.zsh"
+zplug "nvbn/thefuck"
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "jeffreytse/zsh-vi-mode"
+zplug "wting/autojump"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
