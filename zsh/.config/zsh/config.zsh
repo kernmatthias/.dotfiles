@@ -22,6 +22,7 @@ export TERMINAL=alacritty
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$XDG_CONFIG_HOME/zsh/zplug
 export DOTFILES=$HOME/.dotfiles
+export QSYS_ROOTDIR="/home/matthias/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
 
 # path
 path+="$HOME/.local/bin"
@@ -61,4 +62,11 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+# load powerlevel10k
+source $XDG_CONFIG_HOME/zsh/p10k.zsh
+
+# disable prompt
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
 
