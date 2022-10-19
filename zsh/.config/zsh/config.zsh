@@ -69,4 +69,4 @@ source $XDG_CONFIG_HOME/zsh/p10k.zsh
 # disable prompt
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
-
+source "$XDG_CONFIG_HOME/zsh/functions.zsh"
