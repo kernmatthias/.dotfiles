@@ -3,6 +3,7 @@ local ccc = {
     ["gruvbox"] = "#555555",
     ["tokyonight"] = "#5caed3",
     ["onedark"] = "none",
+    ["catppuccin"] = "none",
 }
 
 function ApplyColors(colorscheme)
@@ -55,5 +56,9 @@ require('onedark').setup({
     style = 'darker'
 })
 
-ApplyColors('gruvbox')
+require('catppuccin').setup({
+    style = 'mocca',
+})
+
+ApplyColors('catppuccin')
 

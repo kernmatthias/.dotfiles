@@ -47,6 +47,7 @@ return require("packer").startup(function(use)
     use("gruvbox-community/gruvbox")
     use("folke/tokyonight.nvim")
     use("navarasu/onedark.nvim")
+    use("catppuccin/nvim")
 
     -- debugging
     use("mfussenegger/nvim-dap")
@@ -55,5 +56,6 @@ return require("packer").startup(function(use)
 
     -- tools
     use("ThePrimeagen/harpoon") -- for marking files to revisit them later
+    use("kylechui/nvim-surround") -- for having surround command
 end)
 

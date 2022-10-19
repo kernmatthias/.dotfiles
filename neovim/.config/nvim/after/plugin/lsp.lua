@@ -147,7 +147,7 @@ lsp.jedi_language_server.setup(config())
 lsp.cssls.setup(config({}))
 
 -- tailwindcss
-lsp.tailwindcss.setup(config({}))
+-- lsp.tailwindcss.setup(config({}))
 
 -- latex/markdown
 lsp.ltex.setup(config({}))
