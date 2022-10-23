@@ -327,10 +327,10 @@ globalkeys = gears.table.join(
     end, { description = "show the menubar", group = "launcher" }),
     -- brightness control
     awful.key({}, "XF86MonBrightnessDown", function()
-        awful.util.spawn("brightnessctl d 15")
+        awful.util.spawn("brightnessctl s 15-")
     end, { description = "decrement screen brightness", group = "brightness" }),
-    awful.key({}, "XF86MonBrightnessDown", function()
-        awful.util.spawn("brightnessctl i 15")
+    awful.key({}, "XF86MonBrightnessUp", function()
+        awful.util.spawn("brightnessctl s 15+")
     end, { description = "increment screen brightness", group = "brightness" })
 )
 
