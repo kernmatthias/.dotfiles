@@ -1,6 +1,6 @@
 -- color column color
 local ccc = {
-    ["gruvbox"] = "#555555",
+    --["gruvbox"] = "#555555",
     ["tokyonight"] = "#5caed3",
     ["onedark"] = "none",
     ["catppuccin"] = "none",
@@ -52,12 +52,15 @@ function ApplyColors(colorscheme)
 end
 
 -- set style of onedark
+--[[
 require('onedark').setup({
     style = 'darker'
 })
+--]]
 
 require('catppuccin').setup({
     style = 'mocca',
+    transparent_background = false,
 })
 
 ApplyColors('catppuccin')

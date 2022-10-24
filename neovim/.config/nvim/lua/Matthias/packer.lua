@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
     -- color schemes
     use("gruvbox-community/gruvbox")
     use("folke/tokyonight.nvim")
-    use("navarasu/onedark.nvim")
+    -- use("navarasu/onedark.nvim")
     use("catppuccin/nvim")
 
     -- debugging
