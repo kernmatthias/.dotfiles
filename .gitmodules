@@ -1,3 +1,6 @@
 [submodule "zsh/.config/zsh/zplug"]
 	path = zsh/.config/zsh/zplug
 	url = git@github.com:zplug/zplug
+[submodule "neovim/.local/share/nvim/site/pack/packer/start/packer.nvim"]
+	path = neovim/.local/share/nvim/site/pack/packer/start/packer.nvim
+	url = git@github.com:wbthomason/packer.nvim
