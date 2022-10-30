@@ -8,6 +8,14 @@ function setup_displays() {
 }
 
 function setup_keyboard() {
-    setxkbmap -layout de
+    setxkbmap -layout de nodeadkeys
+}
+
+function switch_hybrid() {
+    optimus-manager --switch hybrid
+}
+
+function switch_integrated() {
+    optimus-manager --switch integrated
 }
 
