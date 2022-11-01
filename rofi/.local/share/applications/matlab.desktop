@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=MatLab
+Comment=Matrix Laboratory R2022a
+Exec=/usr/local/MATLAB/R2022a/bin/matlab -desktop
+Icon=/usr/local/MATLAB/R2022a/bin/glnxa64/cef_resources/matlab_icon.png
+Terminal=false
+Type=Application
+Categories=Development
