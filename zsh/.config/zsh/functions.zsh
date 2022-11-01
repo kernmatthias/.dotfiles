@@ -4,7 +4,11 @@ function set_ldd_env() {
 }
 
 function setup_displays() {
-    xrandr --output DP-1-2.2 --auto --left-of eDP-1 --output DP-1-2.1.6 --auto --left-of DP-1-2.2
+    xrandr --output eDP-1 --auto --output DP-1-2.2 --auto --left-of eDP-1 --primary --output DP-1-2.1.6 --auto --left-of DP-1-2.2
+}
+
+function setup_displays_nointegrated() {
+    xrandr --output eDP-1 --off --output DP-1-2.2 --auto --primary --output DP-1-2.1.6 --auto --left-of DP-1-2.2
 }
 
 function setup_keyboard() {

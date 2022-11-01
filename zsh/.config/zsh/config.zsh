@@ -44,6 +44,16 @@ alias gsw="git switch"
 #alias nvimdiff="nvim -d"
 #alias vimdiff="nvim -d"
 
+# load functions
+source "$XDG_CONFIG_HOME/zsh/functions.zsh"
+
+# load private env vars
+[ -f ~/personal/env_vars.zsh ] && source ~/personal/env_vars.zsh
+
+# vunit env vars
+export VUNIT_SIMULATOR=modelsim
+export VUNIT_MODELSIM_PATH=vsim
+
 # load plugins
 source $ZPLUG_HOME/init.zsh
 
@@ -69,5 +79,3 @@ source $XDG_CONFIG_HOME/zsh/p10k.zsh
 
 # disable prompt
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-
-source "$XDG_CONFIG_HOME/zsh/functions.zsh"
