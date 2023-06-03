@@ -4,3 +4,9 @@
 [submodule "neovim/.local/share/nvim/site/pack/packer/start/packer.nvim"]
 	path = neovim/.local/share/nvim/site/pack/packer/start/packer.nvim
 	url = git@github.com:wbthomason/packer.nvim
+[submodule "emacs/.emacs.d"]
+	path = emacs/.emacs.d
+	url = git@github.com:syl20bnr/spacemacs
+[submodule "awesomewm/.config/awesome/keyboard_layout"]
+	path = awesomewm/.config/awesome/keyboard_layout
+	url = https://github.com/echuraev/keyboard_layout
