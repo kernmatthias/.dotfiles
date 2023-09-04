@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Get the path to the currently installed Rust toolchain
+RUST_TOOLCHAIN=$(rustc --print sysroot 2>/dev/null)
+if [[ -z $RUST_TOOLCHAIN ]]; then
+  echo "Error: Rust toolchain not found. Make sure Rust is installed."
+  exit 1
+fi
+
+# Path to the `rust-analyzer` binary
+RUST_ANALYZER_BINARY="$RUST_TOOLCHAIN/bin/rust-analyzer"
+
+# Check if `rust-analyzer` binary exists
+if [[ ! -f $RUST_ANALYZER_BINARY ]]; then
+  echo "Error: rust-analyzer not found in the current toolchain."
+  exit 1
+fi
+
+# Execute rust-analyzer
+$RUST_ANALYZER_BINARY

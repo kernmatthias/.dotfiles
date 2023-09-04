@@ -1,6 +1,6 @@
 if has("nvim")
     " include lua configuration
-    lua require("Matthias")
+    lua require("user")
 else
     " set relative line numbers
     set rnu nu

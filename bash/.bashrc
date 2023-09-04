@@ -15,3 +15,5 @@ alias vim="nvim"
 alias nvimdiff="nvim -d"
 alias vimdiff="nvim -d"
 
+export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python/
+

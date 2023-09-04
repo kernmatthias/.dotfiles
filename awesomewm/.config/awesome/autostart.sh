@@ -6,5 +6,5 @@ run() {
     fi
 }
 
-run "xss-lock -- i3lock -n -i &"
+run "~/.config/awesome/locker.sh"
 

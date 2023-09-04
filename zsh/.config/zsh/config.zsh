@@ -22,10 +22,10 @@ export TERMINAL=alacritty
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$XDG_CONFIG_HOME/zsh/zplug
 export DOTFILES=$HOME/.dotfiles
-export QSYS_ROOTDIR="/home/matthias/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
 
 # path
 path+="$HOME/.local/bin"
+path+="$HOME/.cargo/bin"
 
 # aliases
 alias grep="grep --color"
@@ -51,8 +51,8 @@ source "$XDG_CONFIG_HOME/zsh/functions.zsh"
 [ -f ~/personal/env_vars.zsh ] && source ~/personal/env_vars.zsh
 
 # vunit env vars
-export VUNIT_SIMULATOR=modelsim
-export VUNIT_MODELSIM_PATH=vsim
+export VUNIT_SIMULATOR="modelsim"
+export VUNIT_MODELSIM_PATH="/opt/intelFPGA/21.1/questa_fse/bin"
 
 # load plugins
 source $ZPLUG_HOME/init.zsh
