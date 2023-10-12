@@ -40,3 +40,25 @@ function set_cc_env
 	set ARCH "arm"
 	set CROSS_COMPILE "arm-linux-gnueabihf-"
 end
+
+function connect_fh_vpn
+	sudo pon ppp0
+
+	set max_retry 5
+	set counter 1
+
+	while [ $counter -lt $max_retry ]
+		if sudo ip route add 10.24.0.23 dev ppp0; then
+			echo "Success!"
+			break
+		else
+		sleep 3
+		set counter (math $counter + 1)
+		echo "Trying again. Try #$counter"
+		end
+	end
+
+	if [ $counter -gt $max_retry ]
+		echo "Failed to add route"
+	end
+end

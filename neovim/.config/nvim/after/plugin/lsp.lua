@@ -260,7 +260,7 @@ lsp.ltex.setup(config({}))
 if not configs.rust_hdl then
 	configs.rust_hdl = {
 		default_config = {
-			cmd = { "vhdl_ls" },
+			cmd = { "/home/matthias/projects/rust_hdl/target/debug/vhdl_ls" },
 			filetypes = { "vhdl" },
 			root_dir = function(fname)
 				return lsp.util.root_pattern('vhdl_ls.toml')(fname)

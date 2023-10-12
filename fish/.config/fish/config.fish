@@ -1,6 +1,7 @@
 fish_hybrid_key_bindings
 
-set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
+set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" "/eda/xilinx/Vivado/2021.1/bin/" "/eda/xilinx/Vitis_HLS/2021.1/bin/" $PATH
+
 if test -x "$(command -v tmux)" && test -n "$DISPLAY" && test -z "$TMUX"
 	tmux
 	tmux-sessionizer
@@ -15,7 +16,6 @@ export LM_LICENSE_FILE="$HOME/personal/Questa-License_21-1.dat"
 set EDITOR "nvim"
 
 # path
-set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
 set -x PYTHONPATH "$HOME/.local/lib/python"
 
 alias grep "grep --color"
