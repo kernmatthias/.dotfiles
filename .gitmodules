@@ -10,3 +10,6 @@
 [submodule "awesomewm/.config/awesome/keyboard_layout"]
 	path = awesomewm/.config/awesome/keyboard_layout
 	url = https://github.com/echuraev/keyboard_layout
+[submodule "vivado/.Xilinx/Vivado"]
+	path = vivado/.Xilinx/Vivado
+	url = https://github.com/barbedo/vivado-git
