@@ -1,6 +1,7 @@
 local lsp = require('lspconfig')
 local configs = require('lspconfig.configs')
-local cmp = require('cmp')
+-- local cmp = require('cmp')
+local coq = require('coq')
 local remap = require('user.keymap')
 local lspkind = require('lspkind')
 -- local ih = require("inlay-hints")
@@ -37,7 +38,8 @@ local handlers = {
 }
 
 local function config(_config)
-	return vim.tbl_deep_extend("force", {
+	return coq.lsp_ensure_capabilities(
+	vim.tbl_deep_extend("force", {
 		--capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function( --[[c, b]])
 			--ih.on_attach(c, b)
@@ -53,9 +55,10 @@ local function config(_config)
 			remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
 		end,
 		handlers = handlers,
-	}, _config or {})
+	}, _config or {}))
 end
 
+--[[
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -93,6 +96,7 @@ cmp.setup({
 		ghost_text = false,
 	}
 })
+--]]
 
 -- local tabnine = require('cmp_tabnine.config')
 -- tabnine:setup({
