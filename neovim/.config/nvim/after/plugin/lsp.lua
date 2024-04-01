@@ -41,9 +41,11 @@ local function config(_config)
 	return coq.lsp_ensure_capabilities(
 	vim.tbl_deep_extend("force", {
 		--capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = function( --[[c, b]])
+		on_attach = function(client, bufnr)
 			--ih.on_attach(c, b)
 			remap.nnoremap("gd", vim.lsp.buf.definition)
+			remap.nnoremap("gD", vim.lsp.buf.declaration)
+			remap.nnoremap("<leader>gi", vim.lsp.buf.implementation)
 			remap.nnoremap("<leader>gd", vim.lsp.buf.type_definition)
 			remap.nnoremap("gh", vim.lsp.buf.hover)
 			remap.nnoremap("<leader>od", vim.diagnostic.open_float)
@@ -53,6 +55,16 @@ local function config(_config)
 			remap.nnoremap("<leader>rr", vim.lsp.buf.references)
 			remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
 			remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
+			local rc = client.resolve_capabilities
+			if client.name == 'pylsp' then
+				rc.rename = false
+				rc.completion = false
+			end
+			if client.name == 'pyright' then
+				rc.hover = false
+				rc.definition = false
+				rc.signature_help = false
+			end
 		end,
 		handlers = handlers,
 	}, _config or {}))
@@ -202,7 +214,9 @@ lsp.gopls.setup(config({
 }))
 
 -- python
-lsp.jedi_language_server.setup(config())
+-- lsp.jedi_language_server.setup(config())
+lsp.pylsp.setup(config({}))
+lsp.pyright.setup(config({}))
 
 -- css
 lsp.cssls.setup(config({}))
@@ -264,7 +278,7 @@ lsp.ltex.setup(config({}))
 if not configs.rust_hdl then
 	configs.rust_hdl = {
 		default_config = {
-			cmd = { "/home/matthias/projects/rust_hdl/target/debug/vhdl_ls" },
+			cmd = { "vhdl_ls" },
 			filetypes = { "vhdl" },
 			root_dir = function(fname)
 				return lsp.util.root_pattern('vhdl_ls.toml')(fname)
@@ -277,3 +291,13 @@ lsp.rust_hdl.setup(config({}))
 
 -- bash
 lsp.bashls.setup(config({}))
+
+-- ocaml
+lsp.ocamlls.setup(config({
+	cmd = { "ocamllsp" },
+	filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+	root_dir = lsp.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace")
+}))
+
+-- systemverilog
+lsp.verible.setup(config({}))
