@@ -1,6 +1,6 @@
 fish_hybrid_key_bindings
 
-set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" "/eda/xilinx/Vivado/2021.1/bin/" "/eda/xilinx/Vitis_HLS/2021.1/bin/" $PATH
+set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
 
 if test -x "$(command -v tmux)" && test -n "$DISPLAY" && test -z "$TMUX"
 	tmux
@@ -11,12 +11,8 @@ end
 set TERMINAL "alacritty"
 set XDG_CONFIG_HOME "$HOME/.config/"
 set DOTFILES "$HOME/.dotfiles"
-export LM_LICENSE_FILE="$HOME/personal/Questa-License_21-1.dat"
 
-set EDITOR "nvim"
-
-# path
-set -x PYTHONPATH "$HOME/.local/lib/python"
+set -x EDITOR "nvim"
 
 alias grep "grep --color"
 alias ga "git add"
@@ -35,7 +31,3 @@ alias v "$EDITOR ./"
 
 # add the functions (which are not in the autoload directory)
 source "$XDG_CONFIG_HOME/fish/functions.fish"
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
