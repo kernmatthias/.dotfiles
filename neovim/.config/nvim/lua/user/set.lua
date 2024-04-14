@@ -10,7 +10,7 @@ vim.opt.hidden = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- no error bell
@@ -24,7 +24,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 vim.opt.termguicolors = true
 vim.opt.incsearch = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.local/share/nvim/undodir"
 vim.opt.undofile = true
 
 -- place for displaying errors
