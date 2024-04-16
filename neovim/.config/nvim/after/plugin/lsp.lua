@@ -39,35 +39,35 @@ local handlers = {
 
 local function config(_config)
 	return coq.lsp_ensure_capabilities(
-	vim.tbl_deep_extend("force", {
-		--capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = function(client, bufnr)
-			--ih.on_attach(c, b)
-			remap.nnoremap("gd", vim.lsp.buf.definition)
-			remap.nnoremap("gD", vim.lsp.buf.declaration)
-			remap.nnoremap("<leader>gi", vim.lsp.buf.implementation)
-			remap.nnoremap("<leader>gd", vim.lsp.buf.type_definition)
-			remap.nnoremap("gh", vim.lsp.buf.hover)
-			remap.nnoremap("<leader>od", vim.diagnostic.open_float)
-			remap.nnoremap("<leader>nd", vim.diagnostic.goto_next)
-			remap.nnoremap("<leader>pd", vim.diagnostic.goto_prev)
-			remap.nnoremap("<leader>ca", vim.lsp.buf.code_action)
-			remap.nnoremap("<leader>rr", vim.lsp.buf.references)
-			remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
-			remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
-			local rc = client.resolve_capabilities
-			if client.name == 'pylsp' then
-				rc.rename = false
-				rc.completion = false
-			end
-			if client.name == 'pyright' then
-				rc.hover = false
-				rc.definition = false
-				rc.signature_help = false
-			end
-		end,
-		handlers = handlers,
-	}, _config or {}))
+		vim.tbl_deep_extend("force", {
+			--capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+			on_attach = function(client, bufnr)
+				--ih.on_attach(c, b)
+				remap.nnoremap("gd", vim.lsp.buf.definition)
+				remap.nnoremap("gD", vim.lsp.buf.declaration)
+				remap.nnoremap("<leader>gi", vim.lsp.buf.implementation)
+				remap.nnoremap("<leader>gd", vim.lsp.buf.type_definition)
+				remap.nnoremap("gh", vim.lsp.buf.hover)
+				remap.nnoremap("<leader>od", vim.diagnostic.open_float)
+				remap.nnoremap("<leader>nd", vim.diagnostic.goto_next)
+				remap.nnoremap("<leader>pd", vim.diagnostic.goto_prev)
+				remap.nnoremap("<leader>ca", vim.lsp.buf.code_action)
+				remap.nnoremap("<leader>rr", vim.lsp.buf.references)
+				remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
+				remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
+				local rc = client.resolve_capabilities
+				if client.name == 'pylsp' then
+					rc.rename = false
+					rc.completion = false
+				end
+				if client.name == 'pyright' then
+					rc.hover = false
+					rc.definition = false
+					rc.signature_help = false
+				end
+			end,
+			handlers = handlers,
+		}, _config or {}))
 end
 
 --[[
@@ -188,17 +188,17 @@ lsp.rust_analyzer.setup(config({
 }))
 --]]
 -- c/c++
--- lsp.clangd.setup(config())
-lsp.ccls.setup(config())
+lsp.clangd.setup(config({}))
+-- lsp.ccls.setup(config({}))
 
 -- javascript/typescript
-lsp.tsserver.setup(config())
+lsp.tsserver.setup(config({}))
 
 -- astrojs
-lsp.astro.setup(config())
+lsp.astro.setup(config({}))
 
 -- tailwindcss language server
-lsp.tailwindcss.setup(config())
+lsp.tailwindcss.setup(config({}))
 
 -- go
 lsp.gopls.setup(config({
@@ -300,4 +300,6 @@ lsp.ocamlls.setup(config({
 }))
 
 -- systemverilog
-lsp.verible.setup(config({}))
+lsp.verible.setup(config({
+	cmd = { 'verible-verilog-ls', '--rules_config_search' },
+}))
