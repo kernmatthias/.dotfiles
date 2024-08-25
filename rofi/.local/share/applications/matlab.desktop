@@ -2,8 +2,8 @@
 Version=1.0
 Name=MatLab
 Comment=Matrix Laboratory R2022a
-Exec=/home/matthias/.local/matlab/r2023b/bin/matlab -desktop
-Icon=/home/matthias/.local/matlab/r2023b/bin/glnxa64/cef_resources/matlab_icon.png
+Exec=/home/matthias/.local/bin/matlab -desktop
+Icon=/opt/matlab/r2023b/bin/glnxa64/cef_resources/matlab_icon.png
 Terminal=false
 Type=Application
 Categories=Development

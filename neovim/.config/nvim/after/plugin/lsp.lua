@@ -40,7 +40,6 @@ local handlers = {
 local function config(_config)
 	return coq.lsp_ensure_capabilities(
 		vim.tbl_deep_extend("force", {
-			--capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 			on_attach = function(client, bufnr)
 				--ih.on_attach(c, b)
 				remap.nnoremap("gd", vim.lsp.buf.definition)
@@ -55,6 +54,7 @@ local function config(_config)
 				remap.nnoremap("<leader>rr", vim.lsp.buf.references)
 				remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
 				remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
+                --[[
 				local rc = client.resolve_capabilities
 				if client.name == 'pylsp' then
 					rc.rename = false
@@ -65,6 +65,7 @@ local function config(_config)
 					rc.definition = false
 					rc.signature_help = false
 				end
+                --]]
 			end,
 			handlers = handlers,
 		}, _config or {}))
@@ -128,11 +129,11 @@ lsp.lua_ls.setup(config({
 				version = 'LuaJIT',
 				path = vim.split(package.path, ';'),
 				--[[
-                path = {
-                    '?.lua',
-                    '?/init.lua',
-                },
-                --]]
+				path = {
+					'?.lua',
+					'?/init.lua',
+				},
+				--]]
 			},
 			diagnostics = {
 				-- Get the language server to recognize the `vim` global
@@ -163,33 +164,36 @@ lsp.lua_ls.setup(config({
 -- rust use rust-tools
 --[[
 lsp.rust_analyzer.setup(config({
-    cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true,
-            },
-            checkOnSave = {
-                command = "clippy",
-            },
-        },
-    },
+	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+	settings = {
+		["rust-analyzer"] = {
+			imports = {
+				granularity = {
+					group = "module",
+				},
+				prefix = "self",
+			},
+			cargo = {
+				buildScripts = {
+					enable = true,
+				},
+			},
+			procMacro = {
+				enable = true,
+			},
+			checkOnSave = {
+				command = "clippy",
+			},
+		},
+	},
 }))
 --]]
+
 -- c/c++
-lsp.clangd.setup(config({}))
--- lsp.ccls.setup(config({}))
+-- remove cuda support from clangd
+lsp.clangd.setup(config({ filetypes = { "c", "cpp", "objc", "objcpp", "proto" } }))
+-- only use ccls for cuda
+lsp.ccls.setup(config({ filetypes = { "cuda" } }))
 
 -- javascript/typescript
 lsp.tsserver.setup(config({}))

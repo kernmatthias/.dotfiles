@@ -29,5 +29,8 @@ alias gsw "git switch"
 
 alias v "$EDITOR ./"
 
+alias ll "lsd -la"
+alias ls "lsd"
+
 # add the functions (which are not in the autoload directory)
 source "$XDG_CONFIG_HOME/fish/functions.fish"
