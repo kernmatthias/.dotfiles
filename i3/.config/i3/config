@@ -204,10 +204,10 @@ smart_gaps on
 # smart borders - draw borders around container only if it is not the only container
 smart_borders on
 
-border_radius 10
+# border_radius 10
 
 # set the keyboard layout
-exec setxkbmap -layout de
+exec setxkbmap -layout mine
 
 # start polybar
 exec --no-startup-id $XDG_CONFIG_HOME/polybar/launch.sh
@@ -219,6 +219,6 @@ bindsym $mod+x exec rofi -show run
 bindsym $mod+Shift+x exec rofi -show window
 
 # background images
-exec --no-startup-id nitrogen --restore
+# exec --no-startup-id nitrogen --restore
 
 exec --no-startup-id picom &

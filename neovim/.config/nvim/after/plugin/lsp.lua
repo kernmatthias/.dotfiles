@@ -5,6 +5,9 @@ local coq = require('coq')
 local remap = require('user.keymap')
 local lspkind = require('lspkind')
 -- local ih = require("inlay-hints")
+local mason = require('mason')
+
+mason.setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -221,6 +224,7 @@ lsp.gopls.setup(config({
 -- lsp.jedi_language_server.setup(config())
 lsp.pylsp.setup(config({}))
 lsp.pyright.setup(config({}))
+--lsp.basedpyright.setup(config({}))
 
 -- css
 lsp.cssls.setup(config({}))

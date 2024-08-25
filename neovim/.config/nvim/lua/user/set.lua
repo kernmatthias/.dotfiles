@@ -44,4 +44,3 @@ vim.g.vmt_list_item_char = '-'
 
 -- keep cursor within bounds
 vim.opt.scrolloff = 5
-

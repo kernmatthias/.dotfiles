@@ -29,8 +29,12 @@ alias gsw "git switch"
 
 alias v "$EDITOR ./"
 
-alias ll "lsd -la"
 alias ls "lsd"
+alias ll "lsd -la"
 
 # add the functions (which are not in the autoload directory)
 source "$XDG_CONFIG_HOME/fish/functions.fish"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
