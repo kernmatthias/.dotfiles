@@ -54,6 +54,9 @@ return require("lazy").setup({
 		config = true
 	},
 
+	-- git integration
+	"lewis6991/gitsigns.nvim",
+
 	-- undo tree
 	"mbbill/undotree",
 

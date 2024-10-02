@@ -199,7 +199,7 @@ lsp.clangd.setup(config({ filetypes = { "c", "cpp", "objc", "objcpp", "proto" } 
 lsp.ccls.setup(config({ filetypes = { "cuda" } }))
 
 -- javascript/typescript
-lsp.tsserver.setup(config({}))
+lsp.ts_ls.setup(config({}))
 
 -- astrojs
 lsp.astro.setup(config({}))

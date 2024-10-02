@@ -17,9 +17,11 @@ vim.opt.rtp:prepend(lazypath)
 require('user.set')
 
 require('user.plugins')
-require('user.colors')
+
 require('user.autocmd')
+require('user.colors')
 -- require('user.completions')
+require('user.gitsigns')
 require('user.keymap')
 require('user.luasnip')
 require('user.misc')
