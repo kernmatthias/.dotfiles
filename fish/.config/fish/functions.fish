@@ -62,3 +62,11 @@ function connect_fh_vpn
 		echo "Failed to add route"
 	end
 end
+
+function v
+    if test $argv[1]
+        $EDITOR $argv
+    else
+        $EDITOR ./
+    end
+end

@@ -27,8 +27,6 @@ alias gr "git rebase -i"
 alias gs "git status"
 alias gsw "git switch"
 
-alias v "$EDITOR ./"
-
 alias ls "lsd"
 alias ll "lsd -la"
 
