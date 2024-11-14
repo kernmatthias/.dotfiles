@@ -311,3 +311,6 @@ lsp.ocamlls.setup(config({
 lsp.verible.setup(config({
 	cmd = { 'verible-verilog-ls', '--rules_config_search' },
 }))
+
+-- xml
+lsp.lemminx.setup(config({}))
