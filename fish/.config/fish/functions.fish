@@ -1,39 +1,13 @@
-function switch_hybrid
-    optimus-manager --switch hybrid --no-confirm
-end
-
-function setup_displays
-	xrandr --output DP-2.2 --auto || return
-	xrandr --output DP-2.1.6 --auto || return
-    xrandr --output eDP-1-1 --auto --output DP-2.2 --mode 2560x1440 --rate 120 --primary --output DP-2.1.6 --mode 2560x1440 --rate 120 --left-of DP-2.2
-end
-
-function setup_displays_nointegrated
-	# xrandr --output eDP-1-1 --off --output DP-2.2 --auto --primary --output DP-2.1.6 --auto --left-of DP-2.2
-	# sleep 5
-	xrandr --output DP-2.2 --auto || return
-	xrandr --output DP-2.1.6 --auto || return
-    xrandr --output eDP-1-1 --off --output DP-2.2 --mode 2560x1440 --rate 120 --primary --output DP-2.1.6 --mode 2560x1440 --rate 120 --left-of DP-2.2
-end
-
-function switch_integrated
-    optimus-manager --switch integrated --no-confirm
-end
-
-function switch_nvidia
-    optimus-manager --switch nvidia --no-confirm
-end
-
 function switch_startup_hybrid
-	sudo ln -sf /etc/optimus-manager/startup_hybrid.conf /etc/optimus-manager/optimus-manager.conf
+    sudo envycontrol -s hybrid --verbose --dm lightdm
 end
 
 function switch_startup_integrated
-	sudo ln -sf /etc/optimus-manager/startup_integrated.conf /etc/optimus-manager/optimus-manager.conf
+    sudo envycontrol -s integrated --dm lightdm --verbose
 end
 
 function switch_startup_nvidia
-	sudo ln -sf /etc/optimus-manager/startup_nvidia.conf /etc/optimus-manager/optimus-manager.conf
+     sudo envycontrol -s nvidia --force-comp --dm lightdm --verbose --force
 end
 
 function set_cc_env
@@ -69,4 +43,14 @@ function v
     else
         $EDITOR ./
     end
+end
+
+function setup_work_nvidia
+	xrandr --output DP-2.8 --auto || return
+	xrandr --output DP-2.1 --auto || return
+    xrandr --output eDP-1-1 --mode 2560x1600 --rate 60 --output DP-2.8 --auto --above eDP-1-1 --primary --output DP-2.1 --auto --right-of DP-2.8
+end
+
+function setup_lp_integrated
+    xrandr --output eDP-1 --mode 2560 --rate 60
 end
