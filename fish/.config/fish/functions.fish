@@ -52,5 +52,5 @@ function setup_work_nvidia
 end
 
 function setup_lp_integrated
-    xrandr --output eDP-1 --mode 2560 --rate 60
+    xrandr --output eDP-1 --mode 2560x1600 --rate 60
 end

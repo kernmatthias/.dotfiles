@@ -20,26 +20,26 @@ return require("lazy").setup({
 	-- treesitter -> semantic highlighting
 	"nvim-treesitter/nvim-treesitter-context",
 	"nvim-treesitter/playground",
-	{ "nvim-treesitter/nvim-treesitter",	      run = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter",		  run = ":TSUpdate" },
 
 	-- completions
 	"ms-jpq/coq_nvim",
 
 	-- alternative completion engine
 	--[[
-	"hrsh7th/nvim-cmp",	                   -- completion engine
-	"hrsh7th/cmp-nvim-lsp",	               -- integration with lsp
-	"hrsh7th/cmp-buffer",	                 -- source the buffers for completion hints
-	"hrsh7th/cmp-path",	                   -- source the buffers for completion hints
+	"hrsh7th/nvim-cmp",					   -- completion engine
+	"hrsh7th/cmp-nvim-lsp",				   -- integration with lsp
+	"hrsh7th/cmp-buffer",					 -- source the buffers for completion hints
+	"hrsh7th/cmp-path",					   -- source the buffers for completion hints
 	--]]
 
-	"onsails/lspkind.nvim",	               -- configure completion popup
+	"onsails/lspkind.nvim",				   -- configure completion popup
 	{ "glepnir/lspsaga.nvim", branch = "main" }, -- more lsp actions (code actions, hover doc, ...)
-	"simrat39/symbols-outline.nvim",	      -- tree like view for symbols
-	"L3MON4D3/LuaSnip",	                   -- snippets, supports different formats
+	"simrat39/symbols-outline.nvim",		  -- tree like view for symbols
+	"L3MON4D3/LuaSnip",					   -- snippets, supports different formats
 
 	--[[
-	"saadparwaiz1/cmp_luasnip",	           -- to have luasnip available as a source for the completions menu
+	"saadparwaiz1/cmp_luasnip",			   -- to have luasnip available as a source for the completions menu
 	--]]
 
 	-- git client
@@ -85,4 +85,7 @@ return require("lazy").setup({
 
 	-- copilot
 	--"github/copilot.vim",
+
+	-- keybinds
+	"folke/which-key.nvim",
 })
