@@ -2,6 +2,10 @@ fish_hybrid_key_bindings
 
 set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
 
+if set -q XILINX_VIVADO || set -q XILINX_VITIS
+    exit
+end
+
 if test -x "$(command -v tmux)" && test -n "$DISPLAY" && test -z "$TMUX"
 	tmux
 	tmux-sessionizer
