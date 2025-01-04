@@ -2,13 +2,11 @@ fish_hybrid_key_bindings
 
 set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
 
-if set -q XILINX_VIVADO || set -q XILINX_VITIS
-    exit
-end
-
-if test -x "$(command -v tmux)" && test -n "$DISPLAY" && test -z "$TMUX"
-	tmux
-	tmux-sessionizer
+if test "$TERM" = "alacritty"
+    if test -x "$(command -v tmux)" && test -n "$DISPLAY" && test -z "$TMUX"
+        tmux
+        tmux-sessionizer
+    end
 end
 
 # env vars
