@@ -222,9 +222,9 @@ lsp.gopls.setup(config({
 
 -- python
 -- lsp.jedi_language_server.setup(config())
-lsp.pylsp.setup(config({}))
-lsp.pyright.setup(config({}))
---lsp.basedpyright.setup(config({}))
+-- lsp.pylsp.setup(config({}))
+-- lsp.pyright.setup(config({}))
+lsp.basedpyright.setup(config({}))
 
 -- css
 lsp.cssls.setup(config({}))
@@ -279,7 +279,8 @@ lsp.texlab.setup(config({
 	},
 }))
 
-lsp.ltex.setup(config({}))
+-- lsp.ltex.setup(config({}))
+lsp.ltex_plus.setup(config({}))
 
 -- vhdl
 -- lsp.ghdl_ls.setup(config({}))
