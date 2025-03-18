@@ -37,4 +37,7 @@ source "$XDG_CONFIG_HOME/fish/functions.fish"
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+set --export PATH $PATH $BUN_INSTALL/bin
+
+# deno
+set --export PATH $PATH $HOME/.deno
