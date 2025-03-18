@@ -1,6 +1,6 @@
 fish_hybrid_key_bindings
 
-set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
+set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME/.go/bin" $PATH
 
 if test "$TERM" = "alacritty"
     if test -x "$(command -v tmux)" && test -n "$DISPLAY" && test -z "$TMUX"
@@ -15,6 +15,7 @@ set XDG_CONFIG_HOME "$HOME/.config/"
 set DOTFILES "$HOME/.dotfiles"
 
 set -x EDITOR "nvim"
+set -x GOPATH "$HOME/.go"
 
 alias grep "grep --color"
 alias ga "git add"
