@@ -194,9 +194,11 @@ lsp.rust_analyzer.setup(config({
 
 -- c/c++
 -- remove cuda support from clangd
-lsp.clangd.setup(config({ filetypes = { "c", "cpp", "objc", "objcpp", "proto" } }))
+lsp.clangd.setup(config({ filetypes = { "c", "cpp", "objc", "objcpp", "proto", "arduino" } }))
 -- only use ccls for cuda
 lsp.ccls.setup(config({ filetypes = { "cuda" } }))
+
+-- lsp.arduino_language_server.setup(config({}))
 
 -- javascript/typescript
 lsp.ts_ls.setup(config({}))
