@@ -652,5 +652,5 @@ client.connect_signal("manage", function(c) c.focus = true end)
 awful.spawn.with_shell('~/.config/awesome/autorun.sh')
 awful.spawn.with_shell('cbatticon')
 awful.spawn.with_shell('setxkbmap -layout mine')
--- awful.spawn.with_shell('picom')
+awful.spawn.with_shell('picom')
 -- }}}

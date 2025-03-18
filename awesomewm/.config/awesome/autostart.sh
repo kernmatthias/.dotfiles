@@ -6,5 +6,5 @@ run() {
     fi
 }
 
-run "~/.config/awesome/locker.sh"
+run "${HOME}/.config/awesome/locker.sh"
 
