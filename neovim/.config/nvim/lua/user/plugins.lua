@@ -23,6 +23,15 @@ return require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter",		  run = ":TSUpdate" },
 
 	-- completions
+	--[[
+	{
+		"saghen/blink.cmp",
+		dependencies = "rafamadriz/friendly-snippets",
+		appearance = { nerd_font_variant = "mono" },
+	},
+	--]]
+
+	-- alternative completion engine
 	"ms-jpq/coq_nvim",
 
 	-- alternative completion engine
@@ -85,6 +94,9 @@ return require("lazy").setup({
 
 	-- copilot
 	--"github/copilot.vim",
+
+	-- codecompanion
+	-- { "olimorris/codecompanion.nvim", config = true },
 
 	-- keybinds
 	"folke/which-key.nvim",
