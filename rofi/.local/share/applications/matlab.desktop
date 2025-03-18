@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=MatLab
-Comment=Matrix Laboratory R2024b
-Exec=env MESA_LOADER_DRIVER_OVERRIDE=i965; /home/matthias/.local/bin/matlab -desktop
-Icon=/opt/matlab/r2023b/bin/glnxa64/cef_resources/matlab_icon.png
-Terminal=false
-Type=Application
-Categories=Development
