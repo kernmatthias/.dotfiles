@@ -54,7 +54,7 @@ local function config(_config)
 				remap.nnoremap("<leader>nd", vim.diagnostic.goto_next)
 				remap.nnoremap("<leader>pd", vim.diagnostic.goto_prev)
 				remap.nnoremap("<leader>ca", vim.lsp.buf.code_action)
-				remap.nnoremap("<leader>rr", vim.lsp.buf.references)
+				-- remap.nnoremap("<leader>rr", vim.lsp.buf.references)
 				remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
 				remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
                 --[[
