@@ -44,7 +44,7 @@ return require("lazy").setup({
 
 	"onsails/lspkind.nvim",				   -- configure completion popup
 	{ "glepnir/lspsaga.nvim", branch = "main" }, -- more lsp actions (code actions, hover doc, ...)
-	"simrat39/symbols-outline.nvim",		  -- tree like view for symbols
+	"hedyhli/outline.nvim", -- tree like view for symbols
 	"L3MON4D3/LuaSnip",					   -- snippets, supports different formats
 
 	--[[
@@ -96,7 +96,14 @@ return require("lazy").setup({
 	--"github/copilot.vim",
 
 	-- codecompanion
-	-- { "olimorris/codecompanion.nvim", config = true },
+	{
+		"olimorris/codecompanion.nvim",
+		opts = {},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 
 	-- keybinds
 	"folke/which-key.nvim",
