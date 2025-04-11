@@ -42,3 +42,10 @@ set --export PATH $PATH $BUN_INSTALL/bin
 
 # deno
 set --export PATH $PATH $HOME/.deno
+
+if test -e "$HOME/.config/fish/local.fish"
+    echo "sourcing $HOME/.config/fish/local.fish"
+    source $HOME/.config/fish/local.fish
+else
+    echo "$HOME/.config/fish/local.fish does not exist"
+end
