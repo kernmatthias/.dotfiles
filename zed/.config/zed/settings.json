@@ -5,7 +5,7 @@
 //
 // To see all of Zed's default settings without changing your
 // custom settings, run `zed: open default settings` from the
-// command palette
+// command palette (cmd-shift-p / ctrl-shift-p)
 {
     "assistant": {
         "default_model": {
@@ -15,7 +15,7 @@
         "version": "2"
     },
     "features": {
-        "edit_prediction_provider": "copilot"
+        "edit_prediction_provider": "zed"
     },
     "base_keymap": "VSCode",
     "telemetry": {
@@ -23,18 +23,18 @@
         "metrics": false
     },
     "vim_mode": true,
-    // "ui_font_family": "JetBrainsMono Nerd Font",
-    "buffer_font_family": "JetBrainsMono Nerd Font",
     "edit_predictions": {
         "mode": "subtle"
     },
     "ui_font_size": 16,
     "buffer_font_size": 16,
+    "buffer_font_family": "JetBrainsMono Nerd Font",
     "theme": {
         "mode": "dark",
         "light": "Catppuccin Latte",
         "dark": "Catppuccin Mocha"
     },
-    "tab_size": 4,
-    "format_on_save": "language_server"
+    // "tab_size": 4,
+    // "format_on_save": "language_server",
+    "relative_line_numbers": true
 }

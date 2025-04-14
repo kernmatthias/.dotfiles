@@ -5,6 +5,7 @@
 //
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
+
 [
     {
         "context": "Workspace",
@@ -13,17 +14,11 @@
         }
     },
     {
-        "context": "Editor",
+        "context": "Editor && vim_mode==normal",
         "bindings": {
-            // "j k": ["workspace::SendKeystrokes", "escape"]
-            "ctrl-shift-f": "editor::Format"
-        }
-    },
-    // use alt-enter to accept edit predictions
-    {
-        "context": "Editor && edit_prediction",
-        "bindings": {
-            "alt-enter": "editor::AcceptEditPrediction"
+            "g o": "outline::Toggle",
+            "g O": "project_symbols::Toggle",
+            "g s": "git_panel::ToggleFocus"
         }
     },
     // Bind `tab` back to its original behavior.
@@ -47,14 +42,20 @@
     },
     {
         "context": "vim_mode == literal",
+        "tab": ["vim::Literal", ["tab", "\u0009"]]
+    },
+    // try to exit project search with esc
+    {
+        "context": "ProjectSearchBar",
         "bindings": {
-            "tab": [
-                "vim::Literal",
-                [
-                    "tab",
-                    "\u0009"
-                ]
-            ]
+            "Esc": "tab_switcher::CloseSelectedItem"
+        }
+    },
+    // git
+    {
+        "context": "GitPanel",
+        "bindings": {
+            "s": "git_panel::stage"
         }
     }
 ]
