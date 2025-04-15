@@ -25,7 +25,8 @@
     {
         "context": "Editor",
         "bindings": {
-            "tab": "editor::Tab"
+            "tab": "editor::Tab",
+            "shift-alt-f": "editor::Format"
         }
     },
     {
@@ -41,8 +42,8 @@
         }
     },
     {
-        "context": "vim_mode == literal",
-        "tab": ["vim::Literal", ["tab", "\u0009"]]
+        "context": "vim_mode == literal"
+        // "tab": ["vim::Literal", ["tab", "\u0009"]]
     },
     // try to exit project search with esc
     {
@@ -55,7 +56,8 @@
     {
         "context": "GitPanel",
         "bindings": {
-            "s": "git_panel::stage"
+            "s": "git::ToggleStaged",
+            "S": "git::StageAll"
         }
     }
 ]
