@@ -2,5 +2,6 @@
 
 scrot /tmp/screenshot.png
 magick /tmp/screenshot.png -blur 0x10 /tmp/screenshotblur.png
+rm /tmp/screenshot.png
 i3lock -i /tmp/screenshotblur.png
-
+rm /tmp/screenshotblur.png
