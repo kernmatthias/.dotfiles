@@ -54,7 +54,7 @@
     },
     // git
     {
-        "context": "GitPanel",
+        "context": "GitPanel && !Editor",
         "bindings": {
             "s": "git::ToggleStaged",
             "S": "git::StageAll"
