@@ -10,7 +10,6 @@ if test "$TERM" = "alacritty"
 end
 
 # env vars
-set TERMINAL "alacritty"
 set XDG_CONFIG_HOME "$HOME/.config/"
 set DOTFILES "$HOME/.dotfiles"
 
@@ -44,8 +43,12 @@ set --export PATH $PATH $BUN_INSTALL/bin
 set --export PATH $PATH $HOME/.deno
 
 if test -e "$HOME/.config/fish/local.fish"
-    echo "sourcing $HOME/.config/fish/local.fish"
+    if test "$TERM" = "alacritty"
+        echo "sourcing $HOME/.config/fish/local.fish"
+    end
     source $HOME/.config/fish/local.fish
 else
-    echo "$HOME/.config/fish/local.fish does not exist"
+    if test "$TERM" = "alacritty"
+        echo "$HOME/.config/fish/local.fish does not exist"
+    end
 end
