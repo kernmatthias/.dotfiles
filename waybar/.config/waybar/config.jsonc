@@ -1,7 +1,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 34, // Waybar height (to be removed for auto height)
+    // "height": 34, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -9,13 +9,14 @@
         "hyprland/workspaces",
         "idle_inhibitor",
         "pulseaudio",
-        "backlight",
         "network",
+        "gamemode"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
+        "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
@@ -33,15 +34,6 @@
          "on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
          "on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
     },
-    "keyboard-state": {
-        "numlock": false,
-        "capslock": false,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "hyprland/window": {
         "max-length": 50,
         "separate-outputs": true
@@ -53,9 +45,32 @@
             "deactivated": ""
         }
     },
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "",
+        "hide-not-running": false,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
+        "icon-size": 20,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
+    },
     "tray": {
         // "icon-size": 21,
-        "spacing": 0
+        "spacing": 2
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -63,10 +78,12 @@
     },
     "cpu": {
         "format": "{usage}% ",
+        "interval": 1,
         "tooltip": true
     },
     "memory": {
         "format": "{}% ",
+        "interval": 1,
         "tooltip": true
     },
     "temperature": {
@@ -80,11 +97,6 @@
             "",
             ""
         ]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
@@ -100,17 +112,16 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "network": {
         // "interface": "wlan0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "interval": 1,
+        "format-wifi": "{ifname}: {essid} - {ipaddr}/{cidr} ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} 🖧",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{ifname} via {gwaddr}\nFrequency: {frequency} GHz\nSignal Strength: {signaldBm} dBm\n",
+        "format-linked": "{ifname} (No IP) ⚠",
+        "format-disconnected": "Disconnected ❌",
+        "format-alt": "⬇️ {bandwidthDownBits} ⬆️ {bandwidthUpBits}"
     },
     "pulseaudio": {
         // "scroll-step": 10, // %, can be a float
