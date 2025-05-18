@@ -48,7 +48,7 @@ end
 function setup_work_nvidia
 	xrandr --output DP-2.8 --auto || return
 	xrandr --output DP-2.1 --auto || return
-    xrandr --output eDP-1-1 --mode 2560x1600 --rate 60 --output DP-2.1 --auto --left-of eDP-1-1 --primary --output DP-2.8 --auto --left-of DP-2.1
+    xrandr --output eDP-1-1 --off --output DP-2.8 --auto --left-of eDP-1-1 --primary --output DP-2.1 --auto --left-of DP-2.8
 end
 
 function setup_lp_integrated
