@@ -16,9 +16,9 @@ alias nvimdiff="nvim -d"
 alias vimdiff="nvim -d"
 
 export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python/
-export LM_LICENSE_FILE=$HOME/personal/Questa-License_21-1.dat:/eda/xilinx/CMAC_License.lic:27000@10.40.0.82
+export LM_LICENSE_FILE="$LM_LICENSE_FILE:/eda/xilinx/CMAC_License.lic:27000@10.40.0.82"
 
-export QSYS_ROOTDIR="/eda/intelFPGA/23.1std/quartus/sopc_builder/bin"
+export QSYS_ROOTDIR="/eda/intelFPGA/24.1std/quartus/sopc_builder/bin"
 
 export VSCODE_GALLERY_SERVICE_URL='https://marketplace.visualstudio.com/_apis/public/gallery'
 export VSCODE_GALLERY_ITEM_URL='https://marketplace.visualstudio.com/items'

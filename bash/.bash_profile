@@ -2,4 +2,4 @@
 test -f ~/.profile && . ~/.profile
 test -f ~/.bashrc && . ~/.bashrc
 
-export QSYS_ROOTDIR="/eda/intelFPGA/23.1std/quartus/sopc_builder/bin"
+export QSYS_ROOTDIR="/eda/intelFPGA/24.1std/quartus/sopc_builder/bin"
