@@ -363,6 +363,9 @@ local globalkeys = gears.table.join(
     awful.key({}, "XF86AudioPlay", function()
         awful.util.spawn("playerctl play-pause")
     end, { description = "Play/Pause current track", group = "Audio" }),
+    awful.key({ modkey, "Control", "Shift" }, "space", function()
+        awful.util.spawn("playerctl play-pause")
+    end, { description = "Play/Pause current track", group = "Audio" }),
     awful.key({}, "XF86AudioPrev", function()
         awful.util.spawn("playerctl previous")
     end, { description = "Go back to beginning of the track, or to the previous track", group = "Audio" }),
