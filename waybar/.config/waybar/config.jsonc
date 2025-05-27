@@ -16,6 +16,7 @@
         "hyprland/window"
     ],
     "modules-right": [
+        "hyprland/language",
         "power-profiles-daemon",
         "cpu",
         "memory",
@@ -60,6 +61,12 @@
     "tray": {
         // "icon-size": 21,
         "spacing": 2
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-de": "de",
+        "format-": "mine", // hack: xkb does not find German (Mine), so use the empty lang as mine
+        "on-click": "hyprctl switchxkblayout all next"
     },
     "power-profiles-daemon": {
         "format": "{icon}",
