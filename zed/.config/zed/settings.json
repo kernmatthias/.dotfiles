@@ -7,10 +7,26 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "assistant": {
+    "agent": {
+        "default_profile": "ask",
+        "profiles": {
+            "test": {
+                "name": "test",
+                "tools": {
+                    "thinking": true
+                },
+                "enable_all_context_servers": false,
+                "context_servers": {}
+            }
+        },
+        "always_allow_tool_actions": true,
+        "inline_assistant_model": {
+            "provider": "copilot_chat",
+            "model": "o3-mini"
+        },
         "default_model": {
-            "provider": "google",
-            "model": "gemini-2.5-pro-exp-03-25"
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4"
         },
         "version": "2"
     },
