@@ -32,6 +32,7 @@ vim.opt.cmdheight = 1
 
 -- set leader
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- netrw
 vim.g.netrw_browse_split = 0
@@ -44,3 +45,4 @@ vim.g.vmt_list_item_char = '-'
 
 -- keep cursor within bounds
 vim.opt.scrolloff = 5
+

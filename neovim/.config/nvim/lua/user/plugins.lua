@@ -90,7 +90,16 @@ return require("lazy").setup({
 	"simrat39/rust-tools.nvim",
 
 	-- latex
-	--"lervag/vimtex",
+	{
+		"lervag/vimtex",
+		lazy = false,
+		init = function()
+			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_compiler_latexmk = { out_dir = function()
+				return "build"
+			end }
+		end
+	},
 
 	-- copilot
 	--"github/copilot.vim",
