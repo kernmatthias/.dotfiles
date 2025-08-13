@@ -95,9 +95,14 @@ return require("lazy").setup({
 		lazy = false,
 		init = function()
 			vim.g.vimtex_view_method = "zathura"
-			vim.g.vimtex_compiler_latexmk = { out_dir = function()
-				return "build"
-			end }
+			vim.g.vimtex_compiler_latexmk = {
+				out_dir = function()
+					return "build"
+				end,
+				aux_dir = function()
+					return "build"
+				end
+			}
 		end
 	},
 

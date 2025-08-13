@@ -235,51 +235,51 @@ lsp.cssls.setup(config({}))
 -- lsp.tailwindcss.setup(config({}))
 
 -- latex
--- lsp.texlab.setup(config({
--- 	cmd = { "texlab", "-v" },
--- 	settings = {
--- 		texlab = {
--- 			build = {
--- 				executeable = "latexmk",
--- 				forwaredSearchAfter = false,
--- 				onSave = true,
--- 				args = {
--- 					"-pdf",
--- 					"-interaction=nonstopmode",
--- 					"-output-directory=build",
--- 					"-synctex=1",
--- 					"--shell-escape",
--- 					"%f",
--- 				},
--- 			},
--- 			auxDirectory = "build",
--- 			forwardSearch = {
--- 				executable = "zathura",
--- 				args = {
--- 					"--synctex-forward",
--- 					"%l:1:%f",
--- 					"%p"
--- 				},
--- 			},
--- 			chktex = {
--- 				onOpenAndSave = false,
--- 				onEdit = false,
--- 			},
--- 			diagnosticsDelay = 300,
--- 			diagnostics = {
--- 				allowedPatterns = {},
--- 				ignoredPatterns = {},
--- 			},
--- 			formatterLineLength = 80,
--- 			bibtexFormatter = "texlab",
--- 			latexFormatter = "latexindent",
--- 			latexindent = {
--- 				--local = "~/.latexindent.yaml"
--- 				modifyLineBreaks = true,
--- 			},
--- 		},
--- 	},
--- }))
+lsp.texlab.setup(config({
+	cmd = { "texlab", "-v" },
+	-- settings = {
+		-- texlab = {
+		--	 build = {
+		--	 	executeable = "latexmk",
+		--	 	forwaredSearchAfter = false,
+		--	 	onSave = true,
+		--	 	args = {
+		--	 		"-pdf",
+		--	 		"-interaction=nonstopmode",
+		--	 		"-output-directory=build",
+		--	 		"-synctex=1",
+		--	 		"--shell-escape",
+		--	 		"%f",
+		--	 	},
+		--	 },
+		--	 auxDirectory = "build",
+		--	 forwardSearch = {
+		--	 	executable = "zathura",
+		--	 	args = {
+		--	 		"--synctex-forward",
+		--	 		"%l:1:%f",
+		--	 		"%p"
+		--	 	},
+		--	 },
+		--	 chktex = {
+		--	 	onOpenAndSave = false,
+		--	 	onEdit = false,
+		--	 },
+		--	 diagnosticsDelay = 300,
+		--	 diagnostics = {
+		--	 	allowedPatterns = {},
+		--	 	ignoredPatterns = {},
+		--	 },
+		--	 formatterLineLength = 80,
+		--	 bibtexFormatter = "texlab",
+		--	 latexFormatter = "latexindent",
+		--	 latexindent = {
+		--	 	--local = "~/.latexindent.yaml"
+		--	 	modifyLineBreaks = true,
+		--	 },
+		-- },
+	-- },
+}))
 
 -- lsp.ltex.setup(config({}))
 lsp.ltex_plus.setup(config({}))
