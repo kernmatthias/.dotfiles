@@ -26,6 +26,7 @@ nnoremap("<leader>u", ":UndotreeToggle<CR>")
 xnoremap("<leader>p", "\"_dP")
 
 nnoremap("<A-F>", "<cmd>:lua vim.lsp.buf.format()<CR>")
+vim.keymap.set({"n"}, "<A-F>", function() require("conform").format({lsp_fallback = true}) end, {desc = "formatting"})
 
 -- center on scroll + search
 nnoremap("<C-d>", "<C-d>zz")

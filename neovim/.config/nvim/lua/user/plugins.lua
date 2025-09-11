@@ -121,4 +121,7 @@ return require("lazy").setup({
 
 	-- keybinds
 	"folke/which-key.nvim",
+
+    -- autoformatting
+    "stevearc/conform.nvim",
 })
