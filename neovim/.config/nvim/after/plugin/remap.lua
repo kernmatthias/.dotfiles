@@ -1,4 +1,4 @@
-local remap = require('user.keymap')
+local remap = require("user.keymap")
 local nnoremap = remap.nnoremap
 local vnoremap = remap.vnoremap
 -- local inoremap = remap.inoremap
@@ -23,10 +23,7 @@ nnoremap("<leader>d", ":Ex<CR>")
 nnoremap("<leader>u", ":UndotreeToggle<CR>")
 
 -- allow replacing selection with regular buffer and keeping the content
-xnoremap("<leader>p", "\"_dP")
-
-nnoremap("<A-F>", "<cmd>:lua vim.lsp.buf.format()<CR>")
-vim.keymap.set({"n"}, "<A-F>", function() require("conform").format({lsp_fallback = true}) end, {desc = "formatting"})
+xnoremap("<leader>p", '"_dP')
 
 -- center on scroll + search
 nnoremap("<C-d>", "<C-d>zz")

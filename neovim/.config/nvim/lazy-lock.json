@@ -13,7 +13,7 @@
   "lspkind.nvim": { "branch": "master", "commit": "3ddd1b4edefa425fda5a9f95a4f25578727c0bb3" },
   "lspsaga.nvim": { "branch": "main", "commit": "8efe00d6aed9db6449969f889170f1a7e43101a1" },
   "mason.nvim": { "branch": "main", "commit": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800" },
-  "neogit": { "branch": "master", "commit": "451e57fa3633c935c4c32c669ad5aa447d3db257" },
+  "neogit": { "branch": "master", "commit": "411d615291d9e8f49b377410385febd1e9ce1787" },
   "nvim": { "branch": "main", "commit": "ce4a8e0d5267e67056f9f4dcf6cb1d0933c8ca00" },
   "nvim-lspconfig": { "branch": "master", "commit": "de659c9c0d53df0e6b4747d8d1ef22ba1164291d" },
   "nvim-surround": { "branch": "main", "commit": "fcfa7e02323d57bfacc3a141f8a74498e1522064" },

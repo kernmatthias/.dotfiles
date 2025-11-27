@@ -1,3 +1,6 @@
+local remap = require("user.keymap")
+local nnoremap = remap.nnoremap
+
 local options = {
 	formatters_by_ft = {
 		json = { "fixjson" },
@@ -8,7 +11,7 @@ local options = {
 		vhdl = { "vsg" },
 		zig = { "zigfmt" },
 	},
-	timeout_ms = 1500,
+	timeout_ms = 1000,
 
 	-- format_on_save = {
 	--   -- These options will be passed to conform.format()
@@ -18,3 +21,8 @@ local options = {
 }
 
 require("conform").setup(options)
+
+-- nnoremap("<A-F>", "<cmd>:lua vim.lsp.buf.format()<CR>")
+nnoremap("<A-F>", function()
+	require("conform").format({ lsp_fallback = true, timeout_ms = 1000 })
+end, { desc = "formatting" })

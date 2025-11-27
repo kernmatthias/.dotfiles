@@ -15,12 +15,15 @@ return require("lazy").setup({
 
 	-- telescope -> finding + refactoring + ...
 	"nvim-telescope/telescope.nvim",
-	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
 
 	-- treesitter -> semantic highlighting
 	"nvim-treesitter/nvim-treesitter-context",
 	"nvim-treesitter/playground",
-	{ "nvim-treesitter/nvim-treesitter",		  run = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
 
 	-- completions
 	--[[
@@ -42,10 +45,10 @@ return require("lazy").setup({
 	"hrsh7th/cmp-path",					   -- source the buffers for completion hints
 	--]]
 
-	"onsails/lspkind.nvim",				   -- configure completion popup
+	"onsails/lspkind.nvim", -- configure completion popup
 	{ "glepnir/lspsaga.nvim", branch = "main" }, -- more lsp actions (code actions, hover doc, ...)
 	"hedyhli/outline.nvim", -- tree like view for symbols
-	"L3MON4D3/LuaSnip",					   -- snippets, supports different formats
+	"L3MON4D3/LuaSnip", -- snippets, supports different formats
 
 	--[[
 	"saadparwaiz1/cmp_luasnip",			   -- to have luasnip available as a source for the completions menu
@@ -60,7 +63,7 @@ return require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 			-- Only one of these is needed, not both.
 		},
-		config = true
+		config = true,
 	},
 
 	-- git integration
@@ -101,13 +104,10 @@ return require("lazy").setup({
 				end,
 				aux_dir = function()
 					return "build"
-				end
+				end,
 			}
-		end
+		end,
 	},
-
-	-- copilot
-	--"github/copilot.vim",
 
 	-- codecompanion
 	-- {
@@ -122,6 +122,6 @@ return require("lazy").setup({
 	-- keybinds
 	"folke/which-key.nvim",
 
-    -- autoformatting
-    "stevearc/conform.nvim",
+	-- autoformatting
+	"stevearc/conform.nvim",
 })
