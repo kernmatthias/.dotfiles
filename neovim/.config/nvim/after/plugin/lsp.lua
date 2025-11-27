@@ -1,11 +1,10 @@
-local lsp = require('lspconfig')
-local configs = require('lspconfig.configs')
+local configs = require("lspconfig.configs")
 -- local cmp = require('cmp')
-local coq = require('coq')
-local remap = require('user.keymap')
-local lspkind = require('lspkind')
+local coq = require("coq")
+local remap = require("user.keymap")
+local lspkind = require("lspkind")
 -- local ih = require("inlay-hints")
-local mason = require('mason')
+local mason = require("mason")
 
 mason.setup()
 
@@ -24,56 +23,28 @@ local source_mapping = {
 
 require("fidget").setup()
 
-local border = {
-	{ "╭", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╮", "FloatBorder" },
-	{ "│", "FloatBorder" },
-	{ "╯", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╰", "FloatBorder" },
-	{ "│", "FloatBorder" },
-}
-
-local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-}
-
-local function config(_config)
-	return coq.lsp_ensure_capabilities(
-		vim.tbl_deep_extend("force", {
-			on_attach = function(client, bufnr)
-				--ih.on_attach(c, b)
-				remap.nnoremap("gd", vim.lsp.buf.definition)
-				remap.nnoremap("gD", vim.lsp.buf.declaration)
-				remap.nnoremap("<leader>gi", vim.lsp.buf.implementation)
-				remap.nnoremap("<leader>gd", vim.lsp.buf.type_definition)
-				remap.nnoremap("gh", vim.lsp.buf.hover)
-				remap.nnoremap("<leader>od", vim.diagnostic.open_float)
-				remap.nnoremap("<leader>nd", vim.diagnostic.goto_next)
-				remap.nnoremap("<leader>pd", vim.diagnostic.goto_prev)
-				remap.nnoremap("<leader>ca", vim.lsp.buf.code_action)
-				-- remap.nnoremap("<leader>rr", vim.lsp.buf.references)
-				remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
-				remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
-                --[[
-				local rc = client.resolve_capabilities
-				if client.name == 'pylsp' then
-					rc.rename = false
-					rc.completion = false
-				end
-				if client.name == 'pyright' then
-					rc.hover = false
-					rc.definition = false
-					rc.signature_help = false
-				end
-                --]]
-			end,
-			handlers = handlers,
-		}, _config or {}))
-end
-
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		remap.nnoremap("gd", vim.lsp.buf.definition)
+		remap.nnoremap("gD", vim.lsp.buf.declaration)
+		remap.nnoremap("<leader>gi", vim.lsp.buf.implementation)
+		remap.nnoremap("<leader>gd", vim.lsp.buf.type_definition)
+		remap.nnoremap("gh", function()
+			vim.lsp.buf.hover({ border = "rounded" })
+		end)
+		remap.nnoremap("<leader>od", vim.diagnostic.open_float)
+		remap.nnoremap("<leader>nd", function()
+			vim.diagnostic.jump({ count = 1, float = true })
+		end)
+		remap.nnoremap("<leader>pd", function()
+			vim.diagnostic.jump({ count = -1, float = true })
+		end)
+		remap.nnoremap("<leader>ca", vim.lsp.buf.code_action)
+		remap.nnoremap("<leader>rr", vim.lsp.buf.references)
+		remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
+		remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
+	end,
+})
 --[[
 cmp.setup({
 	snippet = {
@@ -123,14 +94,18 @@ cmp.setup({
 -- 	snippet_placeholder = "..",
 -- })
 
-lsp.lua_ls.setup(config({
-	root_dir = lsp.util.root_pattern({ 'init.vim', '.git' }),
+vim.lsp.config("lua_ls", {
+	root_dir = function(bufnr, on_dir)
+		if vim.fs.root(bufnr, { "init.vim", ".git" }) then
+			on_dir(vim.fn.getcwd())
+		end
+	end,
 	settings = {
 		Lua = {
 			runtime = {
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = 'LuaJIT',
-				path = vim.split(package.path, ';'),
+				version = "LuaJIT",
+				path = vim.split(package.path, ";"),
 				--[[
 				path = {
 					'?.lua',
@@ -140,9 +115,9 @@ lsp.lua_ls.setup(config({
 			},
 			diagnostics = {
 				-- Get the language server to recognize the `vim` global
-				globals = { 'vim', 'awesome' },
+				globals = { "vim", "awesome" },
 				neededFileStatus = {
-					['codestyle-check'] = 'Any',
+					["codestyle-check"] = "Any",
 				},
 			},
 			workspace = {
@@ -156,61 +131,48 @@ lsp.lua_ls.setup(config({
 			format = {
 				enable = true,
 				defaultConfig = {
-					indent_style = 'tab',
-					indent_size = '4',
+					indent_style = "tab",
+					indent_size = "4",
 				},
 			},
 		},
 	},
-}))
+})
+vim.lsp.enable("lua_ls")
 
 -- rust use rust-tools
---[[
-lsp.rust_analyzer.setup(config({
-	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+vim.lsp.config("rust_analyzer", {
 	settings = {
 		["rust-analyzer"] = {
-			imports = {
-				granularity = {
-					group = "module",
-				},
-				prefix = "self",
-			},
-			cargo = {
-				buildScripts = {
-					enable = true,
-				},
-			},
-			procMacro = {
-				enable = true,
-			},
-			checkOnSave = {
-				command = "clippy",
+			diagnostics = {
+				enable = false,
 			},
 		},
 	},
-}))
---]]
+})
 
 -- c/c++
 -- remove cuda support from clangd
-lsp.clangd.setup(config({ filetypes = { "c", "cpp", "objc", "objcpp", "proto", "arduino" } }))
+vim.lsp.config("clangd", { filetypes = { "c", "cpp", "objc", "objcpp", "proto", "arduino" } })
+vim.lsp.enable("clangd")
+
 -- only use ccls for cuda
-lsp.ccls.setup(config({ filetypes = { "cuda" } }))
+vim.lsp.config("ccls", { filetypes = { "cuda" } })
+vim.lsp.enable("ccls")
 
 -- lsp.arduino_language_server.setup(config({}))
 
 -- javascript/typescript
-lsp.ts_ls.setup(config({}))
+vim.lsp.enable("ts_ls")
 
 -- astrojs
-lsp.astro.setup(config({}))
+vim.lsp.enable("astro")
 
 -- tailwindcss language server
-lsp.tailwindcss.setup(config({}))
+vim.lsp.enable("tailwindcss")
 
 -- go
-lsp.gopls.setup(config({
+vim.lsp.config("gopls", {
 	cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
@@ -220,100 +182,38 @@ lsp.gopls.setup(config({
 			staticcheck = true,
 		},
 	},
-}))
+})
+vim.lsp.enable("gopls")
 
 -- python
 -- lsp.jedi_language_server.setup(config())
 -- lsp.pylsp.setup(config({}))
 -- lsp.pyright.setup(config({}))
-lsp.basedpyright.setup(config({}))
+vim.lsp.enable("basedpyright")
 
 -- css
-lsp.cssls.setup(config({}))
+vim.lsp.enable("cssls")
 
 -- tailwindcss
 -- lsp.tailwindcss.setup(config({}))
 
 -- latex
-lsp.texlab.setup(config({
-	cmd = { "texlab", "-v" },
-	-- settings = {
-		-- texlab = {
-		--	 build = {
-		--	 	executeable = "latexmk",
-		--	 	forwaredSearchAfter = false,
-		--	 	onSave = true,
-		--	 	args = {
-		--	 		"-pdf",
-		--	 		"-interaction=nonstopmode",
-		--	 		"-output-directory=build",
-		--	 		"-synctex=1",
-		--	 		"--shell-escape",
-		--	 		"%f",
-		--	 	},
-		--	 },
-		--	 auxDirectory = "build",
-		--	 forwardSearch = {
-		--	 	executable = "zathura",
-		--	 	args = {
-		--	 		"--synctex-forward",
-		--	 		"%l:1:%f",
-		--	 		"%p"
-		--	 	},
-		--	 },
-		--	 chktex = {
-		--	 	onOpenAndSave = false,
-		--	 	onEdit = false,
-		--	 },
-		--	 diagnosticsDelay = 300,
-		--	 diagnostics = {
-		--	 	allowedPatterns = {},
-		--	 	ignoredPatterns = {},
-		--	 },
-		--	 formatterLineLength = 80,
-		--	 bibtexFormatter = "texlab",
-		--	 latexFormatter = "latexindent",
-		--	 latexindent = {
-		--	 	--local = "~/.latexindent.yaml"
-		--	 	modifyLineBreaks = true,
-		--	 },
-		-- },
-	-- },
-}))
+vim.lsp.enable("texlab")
 
--- lsp.ltex.setup(config({}))
-lsp.ltex_plus.setup(config({}))
+vim.lsp.enable("ltex_plus")
 
 -- vhdl
 -- lsp.ghdl_ls.setup(config({}))
-if not configs.rust_hdl then
-	configs.rust_hdl = {
-		default_config = {
-			cmd = { "vhdl_ls" },
-			filetypes = { "vhdl" },
-			root_dir = function(fname)
-				return lsp.util.root_pattern('vhdl_ls.toml')(fname)
-			end,
-			settings = {},
-		}
-	}
-end
-lsp.rust_hdl.setup(config({}))
+vim.lsp.enable("vhdl_ls")
 
 -- bash
-lsp.bashls.setup(config({}))
+vim.lsp.enable("bashls")
 
 -- ocaml
-lsp.ocamlls.setup(config({
-	cmd = { "ocamllsp" },
-	filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
-	root_dir = lsp.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace")
-}))
+vim.lsp.enable("ocamllsp")
 
 -- systemverilog
-lsp.verible.setup(config({
-	cmd = { 'verible-verilog-ls', '--rules_config_search' },
-}))
+vim.lsp.enable("verible")
 
 -- xml
-lsp.lemminx.setup(config({}))
+vim.lsp.enable("lemminx")

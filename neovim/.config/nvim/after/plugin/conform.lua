@@ -8,6 +8,7 @@ local options = {
 		vhdl = { "vsg" },
 		zig = { "zigfmt" },
 	},
+	timeout_ms = 1500,
 
 	-- format_on_save = {
 	--   -- These options will be passed to conform.format()

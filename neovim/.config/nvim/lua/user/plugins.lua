@@ -87,7 +87,7 @@ return require("lazy").setup({
 	"mzlogin/vim-markdown-toc",
 
 	-- rust
-	"simrat39/rust-tools.nvim",
+	-- "simrat39/rust-tools.nvim",
 
 	-- latex
 	{
@@ -110,14 +110,14 @@ return require("lazy").setup({
 	--"github/copilot.vim",
 
 	-- codecompanion
-	{
-		"olimorris/codecompanion.nvim",
-		opts = {},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
+	-- {
+	-- 	"olimorris/codecompanion.nvim",
+	-- 	opts = {},
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- },
 
 	-- keybinds
 	"folke/which-key.nvim",
