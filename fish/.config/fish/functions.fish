@@ -46,11 +46,21 @@ function v
 end
 
 function setup_work_nvidia
-	xrandr --output DP-2.8 --auto || return
-	xrandr --output DP-2.1 --auto || return
+    xrandr | grep " connected " | awk '{print$1}' | grep "DP-2.8" || return
+    xrandr | grep " connected " | awk '{print$1}' | grep "DP-2.1" || return
     xrandr --output eDP-1-1 --off --output DP-2.8 --auto --left-of eDP-1-1 --primary --output DP-2.1 --auto --left-of DP-2.8
+end
+
+function setup_work_nvidia_with_lp
+    xrandr | grep " connected " | awk '{print$1}' | grep "DP-2.8" || return
+    xrandr | grep " connected " | awk '{print$1}' | grep "DP-2.1" || return
+    xrandr --output eDP-1-1 --mode 2560x1600 --rate 60 --output DP-2.8 --auto --left-of eDP-1-1 --primary --output DP-2.1 --auto --left-of DP-2.8
 end
 
 function setup_lp_integrated
     xrandr --output eDP-1 --mode 2560x1600 --rate 60
+end
+
+function setup_lp_nvidia
+    xrandr --output eDP-1-1 --mode 2560x1600 --rate 60
 end
