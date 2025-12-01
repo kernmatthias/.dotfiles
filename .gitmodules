@@ -10,3 +10,6 @@
 [submodule "vivado/.Xilinx/Vivado"]
 	path = vivado/.Xilinx/Vivado
 	url = https://github.com/barbedo/vivado-git
+[submodule "awesomewm/.config/awesome/awesome-wm-widgets"]
+	path = awesomewm/.config/awesome/awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets
