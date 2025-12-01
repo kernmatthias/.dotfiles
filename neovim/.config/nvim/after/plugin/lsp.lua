@@ -1,9 +1,6 @@
-local configs = require("lspconfig.configs")
 -- local cmp = require('cmp')
 local coq = require("coq")
 local remap = require("user.keymap")
-local lspkind = require("lspkind")
--- local ih = require("inlay-hints")
 local mason = require("mason")
 
 mason.setup()
@@ -11,17 +8,7 @@ mason.setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- ih.setup()
-
-local source_mapping = {
-	buffer = "[Buffer]",
-	nvim_lsp = "[LSP]",
-	nvim_lua = "[Lua]",
-	-- cmp_tabnine = "[TN]",
-	path = "[Path]",
-}
-
-require("fidget").setup()
+require("fidget").setup({})
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
@@ -45,54 +32,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
 	end,
 })
---[[
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			require('luasnip').lsp_expand(args.body)
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
-		['<C-u>'] = cmp.mapping.scroll_docs(-4),
-		['<C-d>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-	}),
-	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = lspkind.presets.default[vim_item.kind]
-			local menu = source_mapping[entry.source.name]
-			-- if entry.source.name == "cmp_tabnine" then
-			-- 	if entry.completion_item.data ~= nil and entry.completion_item.datail ~= nil then
-			-- 		menu = entry.completion_item.data.detail .. " " .. menu
-			-- 	end
-			-- 	vim_item.kind = ""
-			-- end
-			vim_item.menu = menu
-			return vim_item
-		end,
-	},
-	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "path" },
-		{ name = "luasnip" },
-		-- { name = "cmp_tabnine" },
-		{ name = "buffer" },
-	},
-	experimental = {
-		ghost_text = false,
-	}
-})
---]]
 
--- local tabnine = require('cmp_tabnine.config')
--- tabnine:setup({
--- 	max_lines = 1000,
--- 	max_num_results = 20,
--- 	sort = true,
--- 	run_on_every_keystroke = true,
--- 	snippet_placeholder = "..",
--- })
+vim.lsp.inlay_hint.enable(true)
 
 vim.lsp.config("lua_ls", {
 	root_dir = function(bufnr, on_dir)
@@ -135,34 +76,149 @@ vim.lsp.config("lua_ls", {
 					indent_size = "4",
 				},
 			},
+			hint = {
+				enable = true,
+			},
 		},
 	},
 })
 vim.lsp.enable("lua_ls")
 
--- rust use rust-tools
+-- rust
 vim.lsp.config("rust_analyzer", {
 	settings = {
 		["rust-analyzer"] = {
+			inlayHints = {
+				bindingModeHints = {
+					enable = false,
+				},
+				chainingHints = {
+					enable = true,
+				},
+				closingBraceHints = {
+					enable = true,
+					minLines = 25,
+				},
+				closureCaptureHints = {
+					enable = true,
+				},
+				closureReturnTypeHints = {
+					enable = "never",
+				},
+				closureStyle = "impl_fn",
+				discriminantHints = {
+					enable = "never",
+				},
+				expressionAdjustmentHints = {
+					disableReborrows = true,
+					enable = "never",
+					hideOutsideUnsafe = false,
+					mode = "prefix",
+				},
+				genericParameterHints = {
+					const = {
+						enable = true,
+					},
+					lifetime = {
+						enable = true,
+					},
+					type = {
+						enable = true,
+					},
+				},
+				implicitDrops = {
+					enable = true,
+				},
+				implicitSizedBoundHints = {
+					enable = true,
+				},
+				impliedTynTraitHints = {
+					enable = true,
+				},
+				lifetimeElisionHints = {
+					enable = "never",
+					useParameterNames = false,
+				},
+				maxLength = 25,
+				parameterHints = {
+					enable = true,
+				},
+				rangeExclusiveHints = {
+					enable = true,
+				},
+				--[[ deprecated
+				reborrowHints = {
+					enable = "never",
+				},
+                --]]
+				renderColons = true,
+				typeHints = {
+					enable = true,
+					hideClosureInitialization = false,
+					hideClosureParameter = false,
+					hideNamedConstructor = false,
+				},
+			},
 			diagnostics = {
 				enable = false,
 			},
 		},
 	},
 })
+vim.lsp.enable("rust_analyzer")
 
 -- c/c++
 -- remove cuda support from clangd
-vim.lsp.config("clangd", { filetypes = { "c", "cpp", "objc", "objcpp", "proto", "arduino" } })
+vim.lsp.config("clangd", {
+	filetypes = { "c", "cpp", "objc", "objcpp", "proto", "arduino" },
+	settings = {
+		clangd = {
+			InlayHints = {
+				Designators = true,
+				Enabled = true,
+				ParameterNames = true,
+				DeducedTypes = true,
+			},
+		},
+	},
+})
 vim.lsp.enable("clangd")
 
 -- only use ccls for cuda
 vim.lsp.config("ccls", { filetypes = { "cuda" } })
 vim.lsp.enable("ccls")
 
--- lsp.arduino_language_server.setup(config({}))
+-- vim.lsp.enable("arduino_language_server")
 
 -- javascript/typescript
+vim.lsp.config("ts_ls", {
+	settings = {
+		typescript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+		javascript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	},
+})
 vim.lsp.enable("ts_ls")
 
 -- astrojs
@@ -176,6 +232,15 @@ vim.lsp.config("gopls", {
 	cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
+			hints = {
+				rangeVariableTypes = true,
+				parameterNames = true,
+				constantValues = true,
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				functionTypeParameters = true,
+			},
 			analyses = {
 				unusedparams = true,
 			},
@@ -186,10 +251,17 @@ vim.lsp.config("gopls", {
 vim.lsp.enable("gopls")
 
 -- python
--- lsp.jedi_language_server.setup(config())
--- lsp.pylsp.setup(config({}))
--- lsp.pyright.setup(config({}))
-vim.lsp.enable("basedpyright")
+-- vim.lsp.enable("basedpyright")
+vim.lsp.config("ty", {
+	settings = {
+		ty = {
+			inlayHints = {
+				variableTypes = true,
+			},
+		},
+	},
+})
+vim.lsp.enable("ty")
 
 -- css
 vim.lsp.enable("cssls")
@@ -217,3 +289,17 @@ vim.lsp.enable("verible")
 
 -- xml
 vim.lsp.enable("lemminx")
+
+-- zig
+vim.lsp.config("zls", {
+	settings = {
+		zls = {
+			enable_inlay_hints = true,
+			inlay_hints_show_builtin = true,
+			inlay_hints_exclude_single_argument = true,
+			inlay_hints_hide_redundant_param_names = false,
+			inlay_hints_hide_redundant_param_names_last_token = false,
+		},
+	},
+})
+vim.lsp.enable("zls")

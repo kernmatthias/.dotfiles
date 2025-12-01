@@ -10,7 +10,6 @@ return require("lazy").setup({
 	-- language servers
 	"neovim/nvim-lspconfig",
 	"j-hui/fidget.nvim",
-	"simrat39/inlay-hints.nvim",
 	"williamboman/mason.nvim",
 
 	-- telescope -> finding + refactoring + ...
