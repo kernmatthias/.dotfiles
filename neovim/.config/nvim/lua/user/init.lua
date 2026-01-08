@@ -20,12 +20,5 @@ require('user.plugins')
 
 require('user.autocmd')
 require('user.colors')
--- require('user.completions')
-require('user.gitsigns')
 require('user.keymap')
-require('user.luasnip')
-require('user.misc')
-require('user.neogit')
-require('user.telescope')
-require('user.treesitter')
 

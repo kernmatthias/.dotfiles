@@ -11,6 +11,7 @@ return require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"j-hui/fidget.nvim",
 	"williamboman/mason.nvim",
+	"filipdutescu/renamer.nvim",
 
 	-- telescope -> finding + refactoring + ...
 	"nvim-telescope/telescope.nvim",
@@ -23,35 +24,26 @@ return require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter-context",
 	"nvim-treesitter/playground",
 	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
 
 	-- completions
-	--[[
-	{
-		"saghen/blink.cmp",
-		dependencies = "rafamadriz/friendly-snippets",
-		appearance = { nerd_font_variant = "mono" },
-	},
-	--]]
+	-- "ms-jpq/coq_nvim",
 
 	-- alternative completion engine
-	"ms-jpq/coq_nvim",
+	"hrsh7th/nvim-cmp", -- completion engine
+	"hrsh7th/cmp-nvim-lsp", -- integration with lsp
+	"hrsh7th/cmp-nvim-lsp-signature-help", -- insert function template
+	"hrsh7th/cmp-buffer", -- source the buffers for completion hints
+	"hrsh7th/cmp-path", -- source the buffers for completion hints
+	"hrsh7th/cmp-cmdline", -- to have cmp work in command mode and search
 
-	-- alternative completion engine
-	--[[
-	"hrsh7th/nvim-cmp",					   -- completion engine
-	"hrsh7th/cmp-nvim-lsp",				   -- integration with lsp
-	"hrsh7th/cmp-buffer",					 -- source the buffers for completion hints
-	"hrsh7th/cmp-path",					   -- source the buffers for completion hints
-	--]]
+	-- "onsails/lspkind.nvim", -- configure completion popup
+	-- { "glepnir/lspsaga.nvim", branch = "main" }, -- more lsp actions (code actions, hover doc, ...)
 
-	"onsails/lspkind.nvim", -- configure completion popup
-	{ "glepnir/lspsaga.nvim", branch = "main" }, -- more lsp actions (code actions, hover doc, ...)
 	"hedyhli/outline.nvim", -- tree like view for symbols
-	"L3MON4D3/LuaSnip", -- snippets, supports different formats
 
-	--[[
-	"saadparwaiz1/cmp_luasnip",			   -- to have luasnip available as a source for the completions menu
-	--]]
+	"L3MON4D3/LuaSnip", -- snippets, supports different formats
+	"saadparwaiz1/cmp_luasnip", -- to have luasnip available as a source for the completions menu
 
 	-- git client
 	{
@@ -108,19 +100,12 @@ return require("lazy").setup({
 		end,
 	},
 
-	-- codecompanion
-	-- {
-	-- 	"olimorris/codecompanion.nvim",
-	-- 	opts = {},
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 	},
-	-- },
-
 	-- keybinds
 	"folke/which-key.nvim",
 
 	-- autoformatting
 	"stevearc/conform.nvim",
+
+    -- file browser
+    "nvim-tree/nvim-tree.lua",
 })

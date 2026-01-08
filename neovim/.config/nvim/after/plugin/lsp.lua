@@ -1,41 +1,45 @@
 -- local cmp = require('cmp')
-local coq = require("coq")
 local remap = require("user.keymap")
 local mason = require("mason")
 
 mason.setup()
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("fidget").setup({})
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
-		remap.nnoremap("gd", vim.lsp.buf.definition)
-		remap.nnoremap("gD", vim.lsp.buf.declaration)
-		remap.nnoremap("<leader>gi", vim.lsp.buf.implementation)
-		remap.nnoremap("<leader>gd", vim.lsp.buf.type_definition)
+		remap.nnoremap("gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
+		remap.nnoremap("gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+		-- remap.nnoremap("<leader>gi", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+		remap.nnoremap("<leader>gd", vim.lsp.buf.type_definition, { desc = "Goto Type Definition" })
 		remap.nnoremap("gh", function()
 			vim.lsp.buf.hover({ border = "rounded" })
-		end)
-		remap.nnoremap("<leader>od", vim.diagnostic.open_float)
+		end, { desc = "Display Hover Information" })
+		remap.nnoremap("<leader>od", vim.diagnostic.open_float, { desc = "Open diagnostics as float" })
 		remap.nnoremap("<leader>nd", function()
 			vim.diagnostic.jump({ count = 1, float = true })
-		end)
+		end, { desc = "Jump to next diagnostic" })
 		remap.nnoremap("<leader>pd", function()
 			vim.diagnostic.jump({ count = -1, float = true })
-		end)
-		remap.nnoremap("<leader>ca", vim.lsp.buf.code_action)
-		remap.nnoremap("<leader>rr", vim.lsp.buf.references)
-		remap.nnoremap("<leader>rn", vim.lsp.buf.rename)
-		remap.nnoremap("<C-h>", vim.lsp.buf.signature_help)
+		end, { desc = "Jump to previous diagnostic" })
+		remap.nnoremap("<leader>ca", vim.lsp.buf.code_action, { desc = "Show available code actions" })
+		-- remap.nnoremap("<leader>rr", vim.lsp.buf.references, { desc = "Show current symbol references" })
+		remap.nnoremap("<leader>rn", function()
+			require("renamer").rename()
+		end, { desc = "Rename current symbol" })
+		remap.nnoremap("<C-h>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
 	end,
 })
 
 vim.lsp.inlay_hint.enable(true)
 
 vim.lsp.config("lua_ls", {
+	capabilities = capabilities,
 	root_dir = function(bufnr, on_dir)
 		if vim.fs.root(bufnr, { "init.vim", ".git" }) then
 			on_dir(vim.fn.getcwd())
@@ -86,6 +90,7 @@ vim.lsp.enable("lua_ls")
 
 -- rust
 vim.lsp.config("rust_analyzer", {
+	capabilities = capabilities,
 	settings = {
 		["rust-analyzer"] = {
 			inlayHints = {
@@ -170,6 +175,7 @@ vim.lsp.enable("rust_analyzer")
 -- c/c++
 -- remove cuda support from clangd
 vim.lsp.config("clangd", {
+	capabilities = capabilities,
 	filetypes = { "c", "cpp", "objc", "objcpp", "proto", "arduino" },
 	settings = {
 		clangd = {
@@ -185,13 +191,17 @@ vim.lsp.config("clangd", {
 vim.lsp.enable("clangd")
 
 -- only use ccls for cuda
-vim.lsp.config("ccls", { filetypes = { "cuda" } })
+vim.lsp.config("ccls", {
+	capabilities = capabilities,
+	filetypes = { "cuda" },
+})
 vim.lsp.enable("ccls")
 
 -- vim.lsp.enable("arduino_language_server")
 
 -- javascript/typescript
 vim.lsp.config("ts_ls", {
+	capabilities = capabilities,
 	settings = {
 		typescript = {
 			inlayHints = {
@@ -222,13 +232,20 @@ vim.lsp.config("ts_ls", {
 vim.lsp.enable("ts_ls")
 
 -- astrojs
+vim.lsp.config("astro", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("astro")
 
 -- tailwindcss language server
+vim.lsp.enable("tailwindcss", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("tailwindcss")
 
 -- go
 vim.lsp.config("gopls", {
+	capabilities = capabilities,
 	cmd = { "gopls", "serve" },
 	settings = {
 		gopls = {
@@ -251,47 +268,73 @@ vim.lsp.config("gopls", {
 vim.lsp.enable("gopls")
 
 -- python
--- vim.lsp.enable("basedpyright")
-vim.lsp.config("ty", {
-	settings = {
-		ty = {
-			inlayHints = {
-				variableTypes = true,
-			},
-		},
-	},
+vim.lsp.config("basedpyright", {
+	capabilities = capabilities,
 })
-vim.lsp.enable("ty")
+vim.lsp.enable("basedpyright")
+-- vim.lsp.config("ty", {
+--  capabilities = capabilities,
+-- 	settings = {
+-- 		ty = {
+-- 			inlayHints = {
+-- 				variableTypes = true,
+-- 			},
+-- 		},
+-- 	},
+-- })
+-- vim.lsp.enable("ty")
 
 -- css
+vim.lsp.config("cssls", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("cssls")
 
--- tailwindcss
--- lsp.tailwindcss.setup(config({}))
-
 -- latex
+vim.lsp.config("texlab", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("texlab")
 
+vim.lsp.config("ltex_plus", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("ltex_plus")
 
 -- vhdl
 -- lsp.ghdl_ls.setup(config({}))
+vim.lsp.config("vhdl_ls", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("vhdl_ls")
 
 -- bash
+vim.lsp.config("bashls", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("bashls")
 
 -- ocaml
+vim.lsp.config("ocamllsp", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("ocamllsp")
 
 -- systemverilog
+vim.lsp.config("verible", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("verible")
 
 -- xml
+vim.lsp.config("lemminx", {
+	capabilities = capabilities,
+})
 vim.lsp.enable("lemminx")
 
 -- zig
 vim.lsp.config("zls", {
+	capabilities = capabilities,
 	settings = {
 		zls = {
 			enable_inlay_hints = true,
@@ -303,3 +346,4 @@ vim.lsp.config("zls", {
 	},
 })
 vim.lsp.enable("zls")
+

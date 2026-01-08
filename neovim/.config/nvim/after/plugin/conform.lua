@@ -7,6 +7,7 @@ local options = {
 		-- html = { "prettier" },
 		json = { "fixjson" },
 		lua = { "stylua" },
+		markdown = { "prettier" },
 		python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
 		-- rust = { "rustfmt", lsp_fallback = true },
 		vhdl = { "vsg" },
@@ -25,5 +26,5 @@ require("conform").setup(options)
 
 -- nnoremap("<A-F>", "<cmd>:lua vim.lsp.buf.format()<CR>")
 nnoremap("<A-F>", function()
-	require("conform").format({ lsp_fallback = true })
+	require("conform").format({ lsp_fallback = true, timeout_ms=10000 })
 end, { desc = "formatting" })

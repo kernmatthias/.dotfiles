@@ -35,14 +35,17 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- netrw
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-vim.g.netrw_sort_options = 'i'
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- vim.g.netrw_browse_split = 0
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_winsize = 25
+-- vim.g.netrw_sort_options = 'i'
 
 -- vim markdown toc
-vim.g.vmt_list_item_char = '-'
+vim.g.vmt_list_item_char = "-"
 
 -- keep cursor within bounds
 vim.opt.scrolloff = 5
 
+vim.g.tex_flavor = "latex"

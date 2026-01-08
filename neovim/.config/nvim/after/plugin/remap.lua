@@ -17,7 +17,7 @@ local xnoremap = remap.xnoremap
 -- vnoremap("<C-k>", ":m '<-2<CR>gv=gv")
 
 -- open directory with space d
-nnoremap("<leader>d", ":Ex<CR>")
+nnoremap("<leader>d", ":NvimTreeOpen<CR>")
 
 -- undotree
 nnoremap("<leader>u", ":UndotreeToggle<CR>")
