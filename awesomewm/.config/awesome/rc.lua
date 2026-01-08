@@ -21,6 +21,7 @@ local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local volume_widget = require("awesome-wm-widgets.pactl-widget.volume")
 local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+local cpu_temp_widget = require("cpu_temp_widget")
 
 -- load keyboard_layout module
 -- local keyboard_layout = require("keyboard_layout")
@@ -145,7 +146,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 local mytextclock = wibox.widget.textclock()
 
-local keyboard_layout = wibox.widget.textbox("mine")
+local systray_widget = wibox.widget.systray()
+local keyboard_widget = wibox.widget.textbox("mine")
 
 local inst_net_speed_widget = net_speed_widget()
 local inst_volume_widget = volume_widget()
@@ -269,12 +271,13 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			--kbdcfg.widget,
 			--mykeyboardlayout,
-			wibox.widget.systray(),
-			keyboard_layout,
+			systray_widget,
+			keyboard_widget,
 			inst_net_speed_widget,
 			inst_volume_widget,
 			inst_ram_widget,
 			inst_cpu_widget,
+			cpu_temp_widget,
 			mytextclock,
 			s.mylayoutbox,
 		},
@@ -331,7 +334,7 @@ local globalkeys = gears.table.join(
 
 	-- Standard program
 	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
+		awful.spawn.with_shell("alacritty msg create-window || " .. terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
@@ -441,14 +444,14 @@ local globalkeys = gears.table.join(
 			if string.find(output, "mine") ~= nil then
 				local res = os.execute("setxkbmap de -variant nodeadkeys")
 				if res then
-					keyboard_layout.text = "de"
+					keyboard_widget.text = "de"
 				else
 					naughty.notify("could not switch to de")
 				end
 			else
 				local res = os.execute("setxkbmap mine")
 				if res then
-					keyboard_layout.text = "mine"
+					keyboard_widget.text = "mine"
 				else
 					naughty.notify("could not switch to mine")
 				end
