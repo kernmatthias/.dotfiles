@@ -28,10 +28,12 @@ require("nvim-treesitter-textobjects").setup({
 			},
 			-- Automatically jump forward to textobj, similar to targets.vim
 			lookahead = true,
-            include_surrounding_whitespace = false
+			include_surrounding_whitespace = false,
 		},
 	},
 })
+
+require("treesitter-context").setup()
 
 vim.keymap.set({ "x", "o" }, "a=", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@assignment.outer", "textobjects")

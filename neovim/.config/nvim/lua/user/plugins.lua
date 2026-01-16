@@ -21,10 +21,10 @@ return require("lazy").setup({
 	},
 
 	-- treesitter -> semantic highlighting
-	"nvim-treesitter/nvim-treesitter-context",
-	"nvim-treesitter/playground",
 	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
 	{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+	"nvim-treesitter/nvim-treesitter-context",
+	"nvim-treesitter/playground",
 
 	-- completions
 	-- "ms-jpq/coq_nvim",

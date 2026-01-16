@@ -13,6 +13,9 @@ require("nvim-tree").setup({
 		git_ignored = false,
 		dotfiles = false,
 	},
+	update_focused_file = {
+		enable = true,
+	},
 })
 
 vim.api.nvim_create_autocmd("QuitPre", {
