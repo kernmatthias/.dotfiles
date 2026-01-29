@@ -81,9 +81,7 @@ return require("lazy").setup({
 	"ThePrimeagen/harpoon", -- for marking files to revisit them later
 	"kylechui/nvim-surround", -- for having surround command
 	"mzlogin/vim-markdown-toc",
-
-	-- rust
-	-- "simrat39/rust-tools.nvim",
+	"folke/snacks.nvim",
 
 	-- latex
 	{
@@ -112,5 +110,8 @@ return require("lazy").setup({
 	"nvim-tree/nvim-tree.lua",
 
 	-- for future use
-	-- {"folke/noice.nvim", event="VeryLazy", dependencies={"MunifTanjim/nui.nvim"}}
+	-- {"folke/noice.nvim", event="VeryLazy", dependencies={"MunifTanjim/nui.nvim"}},
+
+	-- ai shit
+	{ "yetone/avante.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim" } },
 })
