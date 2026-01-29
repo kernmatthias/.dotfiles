@@ -32,3 +32,8 @@ nnoremap("n", "nzz")
 vnoremap("<C-d>", "<C-d>zz")
 vnoremap("<C-u>", "<C-u>zz")
 vnoremap("n", "nzz")
+
+nnoremap("{", "{zz")
+nnoremap("}", "}zz")
+vnoremap("{", "{zz")
+vnoremap("}", "}zz")

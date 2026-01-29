@@ -27,9 +27,6 @@ return require("lazy").setup({
 	"nvim-treesitter/playground",
 
 	-- completions
-	-- "ms-jpq/coq_nvim",
-
-	-- alternative completion engine
 	"hrsh7th/nvim-cmp", -- completion engine
 	"hrsh7th/cmp-nvim-lsp", -- integration with lsp
 	"hrsh7th/cmp-nvim-lsp-signature-help", -- insert function template
@@ -37,12 +34,17 @@ return require("lazy").setup({
 	"hrsh7th/cmp-path", -- source the buffers for completion hints
 	"hrsh7th/cmp-cmdline", -- to have cmp work in command mode and search
 
+	-- "saghen/blink.cmp"
+
 	-- "onsails/lspkind.nvim", -- configure completion popup
 	-- { "glepnir/lspsaga.nvim", branch = "main" }, -- more lsp actions (code actions, hover doc, ...)
 
 	"hedyhli/outline.nvim", -- tree like view for symbols
 
-	"L3MON4D3/LuaSnip", -- snippets, supports different formats
+	{
+		"L3MON4D3/LuaSnip", -- snippets, supports different formats
+		dependencies = { "rafamadriz/friendly-snippets" },
+	},
 	"saadparwaiz1/cmp_luasnip", -- to have luasnip available as a source for the completions menu
 
 	-- git client
@@ -106,6 +108,9 @@ return require("lazy").setup({
 	-- autoformatting
 	"stevearc/conform.nvim",
 
-    -- file browser
-    "nvim-tree/nvim-tree.lua",
+	-- file browser
+	"nvim-tree/nvim-tree.lua",
+
+	-- for future use
+	-- {"folke/noice.nvim", event="VeryLazy", dependencies={"MunifTanjim/nui.nvim"}}
 })
