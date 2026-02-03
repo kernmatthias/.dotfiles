@@ -43,3 +43,5 @@ vim.api.nvim_create_autocmd("QuitPre", {
 		end
 	end,
 })
+
+require("lsp-file-operations").setup()

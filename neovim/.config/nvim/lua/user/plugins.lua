@@ -107,7 +107,12 @@ return require("lazy").setup({
 	"stevearc/conform.nvim",
 
 	-- file browser
-	"nvim-tree/nvim-tree.lua",
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"antosha417/nvim-lsp-file-operations",
+		},
+	},
 
 	-- for future use
 	-- {"folke/noice.nvim", event="VeryLazy", dependencies={"MunifTanjim/nui.nvim"}},
