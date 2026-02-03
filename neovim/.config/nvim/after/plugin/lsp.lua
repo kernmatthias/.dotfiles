@@ -238,7 +238,7 @@ vim.lsp.config("astro", {
 vim.lsp.enable("astro")
 
 -- tailwindcss language server
-vim.lsp.enable("tailwindcss", {
+vim.lsp.config("tailwindcss", {
 	capabilities = capabilities,
 })
 vim.lsp.enable("tailwindcss")
@@ -346,4 +346,3 @@ vim.lsp.config("zls", {
 	},
 })
 vim.lsp.enable("zls")
-
