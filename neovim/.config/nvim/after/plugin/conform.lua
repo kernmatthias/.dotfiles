@@ -26,5 +26,5 @@ require("conform").setup(options)
 
 -- nnoremap("<A-F>", "<cmd>:lua vim.lsp.buf.format()<CR>")
 nnoremap("<A-F>", function()
-	require("conform").format({ lsp_fallback = true, timeout_ms=10000 })
+	require("conform").format({ lsp_fallback = true, timeout_ms = 10000 })
 end, { desc = "formatting" })

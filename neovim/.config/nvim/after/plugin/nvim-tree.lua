@@ -9,6 +9,9 @@ require("nvim-tree").setup({
 		group_empty = true,
 		hidden_display = "all",
 	},
+	diagnostics = {
+		enable = true,
+	},
 	filters = {
 		git_ignored = false,
 		dotfiles = false,

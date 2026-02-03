@@ -49,3 +49,6 @@ vim.g.vmt_list_item_char = "-"
 vim.opt.scrolloff = 5
 
 vim.g.tex_flavor = "latex"
+
+-- cursorline
+vim.opt.cursorline = true
