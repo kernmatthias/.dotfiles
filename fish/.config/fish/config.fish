@@ -4,8 +4,7 @@ set -x PATH "$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME/.go/bin" $PATH
 
 if test "$TERM" = "alacritty"
     if test -x "$(command -v tmux)" && test -n "$DISPLAY" && test -z "$TMUX"
-        tmux
-        tmux-sessionizer
+        tmux || tmux-sessionizer
     end
 end
 
