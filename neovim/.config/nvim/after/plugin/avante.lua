@@ -12,4 +12,8 @@ avante.setup({
 		provider = "telescope",
 		provider_opts = {},
 	},
+	auto_suggestions_provider = "ollama",
+	behaviour = {
+		auto_suggestions = false,
+	},
 })
