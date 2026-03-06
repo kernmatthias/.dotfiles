@@ -10,8 +10,12 @@ cpu_temp_widget.text = " CPU: --°C "
 local function update_temp()
 	-- This command extracts the temperature from 'Package id 0' or 'Core 0'
 	-- The regex handles different outputs from the 'sensors' command
+
+	local cmd = "sensors | awk '/Package id 0/ {print $4} /CPUTIN/ {print $2}' | sed 's/+//;s/°C//' | head -n 1"
+
 	awful.spawn.easy_async_with_shell(
-		"sensors | grep -E 'Package id 0' | awk '{print $4}' | sed 's/+//;s/°C//'",
+		cmd,
+		--"sensors | grep -E 'Package id 0' | awk '{print $4}' | sed 's/+//;s/°C//'",
 		function(stdout)
 			local temp = tonumber(stdout)
 			if temp then
