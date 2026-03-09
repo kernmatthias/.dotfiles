@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		remap.nnoremap("<leader>ca", vim.lsp.buf.code_action, { desc = "Show available code actions" })
 		-- remap.nnoremap("<leader>rr", vim.lsp.buf.references, { desc = "Show current symbol references" })
 		remap.nnoremap("<leader>rn", function()
-			require("renamer").rename()
+			vim.lsp.buf.rename()
 		end, { desc = "Rename current symbol" })
 		remap.nnoremap("<C-h>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
 	end,

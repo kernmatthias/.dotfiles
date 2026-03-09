@@ -1,6 +1,11 @@
 local blink = require("blink.cmp")
 
 blink.setup({
+	enabled = function()
+		return true
+		-- and not vim.list_contains({ "lazy", "rip-substitute" }, vim.bo.filetype)
+		-- and vim.bo.buftype ~= "prompt"
+	end,
 	keymap = {
 		preset = "default",
 		-- ["<Up>"] = { "select_prev", "fallback" },

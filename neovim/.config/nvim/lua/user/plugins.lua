@@ -11,7 +11,6 @@ return require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"j-hui/fidget.nvim",
 	"williamboman/mason.nvim",
-	"filipdutescu/renamer.nvim",
 
 	-- telescope -> finding + refactoring + ...
 	"nvim-telescope/telescope.nvim",
@@ -27,7 +26,7 @@ return require("lazy").setup({
 	"nvim-treesitter/playground",
 
 	-- completions
-    --[[
+	--[[
 	"hrsh7th/nvim-cmp", -- completion engine
 	"hrsh7th/cmp-nvim-lsp", -- integration with lsp
 	"hrsh7th/cmp-nvim-lsp-signature-help", -- insert function template
@@ -83,7 +82,15 @@ return require("lazy").setup({
 	"ThePrimeagen/harpoon", -- for marking files to revisit them later
 	"kylechui/nvim-surround", -- for having surround command
 	"mzlogin/vim-markdown-toc",
-	"folke/snacks.nvim",
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		---@type snacks.Config
+		opts = {
+			input = { enabled = true },
+		},
+	},
 
 	-- latex
 	{
