@@ -2,9 +2,11 @@ local blink = require("blink.cmp")
 
 blink.setup({
 	enabled = function()
+		local mode = vim.api.nvim_get_mode().mode
+		if mode == "R" or mode == "Rv" then
+			return false
+		end
 		return true
-		-- and not vim.list_contains({ "lazy", "rip-substitute" }, vim.bo.filetype)
-		-- and vim.bo.buftype ~= "prompt"
 	end,
 	keymap = {
 		preset = "default",

@@ -71,13 +71,6 @@ return require("lazy").setup({
 	"folke/tokyonight.nvim",
 	"catppuccin/nvim",
 
-	--[[
-	-- debugging
-	use("mfussenegger/nvim-dap")
-	use("rcarriga/nvim-dap-ui")
-	use("theHamsta/nvim-dap-virtual-text")
-	--]]
-
 	-- tools
 	"ThePrimeagen/harpoon", -- for marking files to revisit them later
 	"kylechui/nvim-surround", -- for having surround command
@@ -88,6 +81,7 @@ return require("lazy").setup({
 		lazy = false,
 		---@type snacks.Config
 		opts = {
+			indent = { enabled = true },
 			input = { enabled = true },
 		},
 	},
@@ -122,6 +116,15 @@ return require("lazy").setup({
 			"antosha417/nvim-lsp-file-operations",
 		},
 	},
+
+	-- debugging
+	"mfussenegger/nvim-dap",
+	-- "rcarriga/nvim-dap-ui",
+	-- "theHamsta/nvim-dap-virtual-text",
+	"jbyuki/one-small-step-for-vimkind",
+
+	-- status line
+	"nvim-lualine/lualine.nvim",
 
 	-- for future use
 	-- {"folke/noice.nvim", event="VeryLazy", dependencies={"MunifTanjim/nui.nvim"}},
