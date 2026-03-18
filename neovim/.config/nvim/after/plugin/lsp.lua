@@ -10,8 +10,6 @@ mason.setup()
 -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-require("fidget").setup({})
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		remap.nnoremap("gd", vim.lsp.buf.definition, { desc = "Goto Definition" })

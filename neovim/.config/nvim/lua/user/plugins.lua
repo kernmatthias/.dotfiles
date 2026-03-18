@@ -9,7 +9,6 @@ return require("lazy").setup({
 
 	-- language servers
 	"neovim/nvim-lspconfig",
-	"j-hui/fidget.nvim",
 	"williamboman/mason.nvim",
 
 	-- telescope -> finding + refactoring + ...
@@ -93,12 +92,8 @@ return require("lazy").setup({
 		init = function()
 			vim.g.vimtex_view_method = "zathura"
 			vim.g.vimtex_compiler_latexmk = {
-				out_dir = function()
-					return "build"
-				end,
-				aux_dir = function()
-					return "build"
-				end,
+				out_dir = "build",
+				aux_dir = "build",
 			}
 		end,
 	},
@@ -127,7 +122,7 @@ return require("lazy").setup({
 	"nvim-lualine/lualine.nvim",
 
 	-- for future use
-	-- {"folke/noice.nvim", event="VeryLazy", dependencies={"MunifTanjim/nui.nvim"}},
+	{ "folke/noice.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim" } },
 
 	-- ai shit
 	{ "yetone/avante.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim" } },
