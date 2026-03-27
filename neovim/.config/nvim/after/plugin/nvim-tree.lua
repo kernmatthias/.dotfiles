@@ -5,9 +5,35 @@ require("nvim-tree").setup({
 	view = {
 		width = 30,
 	},
+	modified = {
+		enable = true,
+		show_on_dirs = true,
+		show_on_open_dirs = false,
+	},
 	renderer = {
 		group_empty = true,
 		hidden_display = "all",
+		highlight_modified = "name",
+		icons = {
+			glyphs = {
+				modified = "󰏫",
+				folder = {
+					arrow_closed = "󰅂",
+					arrow_open = "󰅀",
+					default = "󰉋",
+					open = "󰝰",
+				},
+				git = {
+					unstaged = "󰄱",
+					staged = "󰱒",
+					unmerged = "󰹹",
+					renamed = "󰁔",
+					untracked = "󰇘",
+					deleted = "󰛉",
+					ignored = "󰛐",
+				},
+			},
+		},
 	},
 	diagnostics = {
 		enable = true,
@@ -18,8 +44,12 @@ require("nvim-tree").setup({
 		git_ignored = false,
 		dotfiles = false,
 	},
+	prefer_startup_root = true,
+	sync_root_with_cwd = true,
+	respect_buf_cwd = true,
 	update_focused_file = {
 		enable = true,
+		update_root = true,
 	},
 })
 
