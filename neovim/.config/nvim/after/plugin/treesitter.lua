@@ -1,21 +1,41 @@
--- require("nvim-treesitter.configs").setup({
--- 	modules = {},
--- 	ignore_install = {},
--- 	auto_install = true,
---
--- 	-- parsers to install
--- 	ensure_installed = { "c", "cpp", "lua", "rust", "python", "go", "bash", "markdown" },
--- 	sync_install = false,
---
--- 	-- enable semantic highlighting
--- 	highlight = {
--- 		enable = true,
--- 		additional_vim_regex_highlighting = false,
--- 	},
--- })
+require("nvim-treesitter").setup({
+	-- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+	install_dir = vim.fn.stdpath("data") .. "/site",
+})
 
-vim.cmd(":TSInstall all")
-vim.cmd(":TSUpdate")
+-- Create an augroup so the autocommand doesn't duplicate on config reload
+local ts_group = vim.api.nvim_create_augroup("TreesitterAutoStart", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = ts_group,
+	desc = "Start Treesitter if a parser is available",
+	callback = function(args)
+		-- pcall prevents an error message from showing if the parser isn't installed.
+		-- args.buf gives the buffer number that triggered the FileType event.
+		pcall(vim.treesitter.start, args.buf)
+	end,
+})
+
+--[[
+require("nvim-treesitter.configs").setup({
+	modules = {},
+	ignore_install = {},
+	auto_install = true,
+
+	-- parsers to install
+	ensure_installed = { "c", "cpp", "lua", "rust", "python", "go", "bash", "markdown" },
+	sync_install = false,
+
+	-- enable semantic highlighting
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+})
+--]]
+
+-- vim.cmd(":TSInstall all")
+-- vim.cmd(":TSUpdate")
 
 require("nvim-treesitter-textobjects").setup({
 	textobjects = {

@@ -4,6 +4,7 @@ local telescope = require("telescope")
 local builtins = require("telescope.builtin")
 local previewers = require("telescope.previewers")
 local actions = require("telescope.actions")
+local layout_actions = require("telescope.actions.layout")
 
 telescope.setup({
 	defaults = {
@@ -41,8 +42,8 @@ telescope.setup({
 
 		mappings = {
 			i = {
-				["<C-x>"] = false,
-				["<C-q>"] = actions.send_to_qflist,
+				["<C-p>"] = layout_actions.toggle_preview,
+				-- ["<C-q>"] = actions.send_to_qflist,
 			},
 		},
 	},
