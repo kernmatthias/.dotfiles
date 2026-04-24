@@ -1,3 +1,4 @@
+--[[
 local blink = require("blink.cmp")
 
 blink.setup({
@@ -47,3 +48,4 @@ blink.setup({
 	snippets = { preset = "luasnip" },
 	signature = { enabled = true },
 })
+--]]

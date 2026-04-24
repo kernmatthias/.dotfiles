@@ -10,6 +10,7 @@ return require("lazy").setup({
 	-- language servers
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
+	"hudson-trading/slang-server.nvim",
 
 	-- telescope -> finding + refactoring + ...
 	"nvim-telescope/telescope.nvim",
@@ -19,22 +20,20 @@ return require("lazy").setup({
 	},
 
 	-- treesitter -> semantic highlighting
-	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", branch = "main" },
 	{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
 	"nvim-treesitter/nvim-treesitter-context",
-	"nvim-treesitter/playground",
+	-- "nvim-treesitter/playground",
 
 	-- completions
-	--[[
 	"hrsh7th/nvim-cmp", -- completion engine
 	"hrsh7th/cmp-nvim-lsp", -- integration with lsp
 	"hrsh7th/cmp-nvim-lsp-signature-help", -- insert function template
 	"hrsh7th/cmp-buffer", -- source the buffers for completion hints
 	"hrsh7th/cmp-path", -- source the buffers for completion hints
 	"hrsh7th/cmp-cmdline", -- to have cmp work in command mode and search
-    --]]
 
-	"saghen/blink.cmp",
+	-- "saghen/blink.cmp",
 
 	-- "onsails/lspkind.nvim", -- configure completion popup
 	-- { "glepnir/lspsaga.nvim", branch = "main" }, -- more lsp actions (code actions, hover doc, ...)
@@ -45,7 +44,7 @@ return require("lazy").setup({
 		"L3MON4D3/LuaSnip", -- snippets, supports different formats
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
-	-- "saadparwaiz1/cmp_luasnip", -- to have luasnip available as a source for the completions menu
+	"saadparwaiz1/cmp_luasnip", -- to have luasnip available as a source for the completions menu
 
 	-- git client
 	{
@@ -94,7 +93,19 @@ return require("lazy").setup({
 			vim.g.vimtex_compiler_latexmk = {
 				out_dir = "build",
 				aux_dir = "build",
+				-- options = {
+				-- 	"-shell-escape",
+				-- 	"-verbose",
+				-- 	"-file-line-error",
+				-- 	"-synctex=1",
+				-- 	"-interaction=nonstopmode",
+				-- 	"-pdflua",
+				-- },
 			}
+			-- vim.g.vimtex_compiler_clean_paths = "build"
+			-- vim.g.vimtex_compiler_latexmk_engines = {
+			-- 	_ = "-lualatex",
+			-- }
 		end,
 	},
 

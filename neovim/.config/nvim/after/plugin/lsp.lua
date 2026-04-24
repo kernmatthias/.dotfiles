@@ -323,7 +323,25 @@ vim.lsp.enable("ocamllsp")
 vim.lsp.config("verible", {
 	capabilities = capabilities,
 })
-vim.lsp.enable("verible")
+-- vim.lsp.enable("verible")
+vim.lsp.config("slang-server", {
+	cmd = { "slang-server" },
+	root_markers = { ".slang", ".git" },
+	filetypes = {
+		"systemverilog",
+		"verilog",
+	},
+	capabilities = capabilities,
+})
+vim.lsp.enable("slang-server")
+vim.lsp.config("sv-lang-server", {
+	capabilities = capabilities,
+})
+-- vim.lsp.enable("sv-lang-server")
+vim.lsp.config("svls", {
+	capabilities = capabilities,
+})
+-- vim.lsp.enable("svls")
 
 -- xml
 vim.lsp.config("lemminx", {
