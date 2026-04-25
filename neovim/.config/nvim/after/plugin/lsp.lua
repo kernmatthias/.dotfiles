@@ -300,6 +300,12 @@ vim.lsp.config("ltex_plus", {
 })
 vim.lsp.enable("ltex_plus")
 
+-- typst
+vim.lsp.config("tinymist", {
+    capabilities = capabilities
+})
+vim.lsp.enable("tinymist")
+
 -- vhdl
 -- lsp.ghdl_ls.setup(config({}))
 vim.lsp.config("vhdl_ls", {
