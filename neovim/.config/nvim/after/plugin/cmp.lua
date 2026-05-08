@@ -61,8 +61,21 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "luasnip" },
 	}, {
-		{ name = "buffer" },
-		{ name = "path" },
+		{ name = "buffer", option = { get_bufnr = vim.api.nvim_list_bufs } },
+		{
+			name = "path",
+			option = {
+				get_cwd = function()
+					-- TODO: add exceptions for langs that should not be realtive
+					local buf_path = vim.api.nvim_buf_get_name(0)
+					if buf_path ~= "" then
+						return vim.fn.fnamemodify(buf_path, ":p:h")
+					else
+						return vim.fn.get_cwd()
+					end
+				end,
+			},
+		},
 	}),
 })
 
