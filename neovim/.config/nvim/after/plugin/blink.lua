@@ -1,5 +1,6 @@
---[[
 local blink = require("blink.cmp")
+
+blink.build():wait(60000)
 
 blink.setup({
 	enabled = function()
@@ -48,4 +49,4 @@ blink.setup({
 	snippets = { preset = "luasnip" },
 	signature = { enabled = true },
 })
---]]
+

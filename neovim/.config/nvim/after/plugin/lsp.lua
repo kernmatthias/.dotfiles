@@ -39,11 +39,12 @@ vim.lsp.inlay_hint.enable(true)
 
 vim.lsp.config("lua_ls", {
 	capabilities = capabilities,
-	root_dir = function(bufnr, on_dir)
-		if vim.fs.root(bufnr, { "init.vim", ".git" }) then
-			on_dir(vim.fn.getcwd())
-		end
-	end,
+	root_markers = { ".luarc.json", "init.vim", ".git" },
+	-- root_dir = function(bufnr, on_dir)
+	-- 	if vim.fs.root(bufnr, { ".luarc.json", "init.vim", ".git" }) then
+	-- 		on_dir(vim.fn.getcwd())
+	-- 	end
+	-- end,
 	settings = {
 		Lua = {
 			runtime = {
@@ -302,7 +303,7 @@ vim.lsp.enable("ltex_plus")
 
 -- typst
 vim.lsp.config("tinymist", {
-    capabilities = capabilities
+	capabilities = capabilities,
 })
 vim.lsp.enable("tinymist")
 
