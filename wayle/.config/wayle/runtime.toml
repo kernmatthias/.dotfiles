@@ -1,0 +1,55 @@
+[bar]
+scale = 0.8500000238418579
+
+[[bar.layout]]
+monitor = "*"
+show = true
+left = [
+    "dashboard",
+    "media",
+    "hyprland-workspaces",
+]
+center = ["window-title"]
+right = [
+    "cpu",
+    "ram",
+    "storage",
+    "battery",
+    "bluetooth",
+    "netstat",
+    "network",
+    "volume",
+    "systray",
+    "notifications",
+    "clock",
+]
+
+[styling.palette]
+bg = "#11111b"
+surface = "#181825"
+elevated = "#1e1e2e"
+fg = "#cdd6f4"
+fg-muted = "#bac2de"
+primary = "#b4befe"
+red = "#f38ba8"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+blue = "#74c7ec"
+
+[modules.clock]
+format = "%a %b %d %H:%M:%S"
+
+[modules.cpu]
+format = "{{ percent }}% {{ temp_c }}°C"
+
+[modules.ram]
+format = "{{ percent }}% {{ used_gib }}GiB/{{ total_gib }}GiB"
+
+[modules.storage]
+format = "{{ free_auto }}"
+
+[modules.window-title]
+format = "{{ app }} - {{ title }}"
+
+[osd]
+enabled = false
